@@ -1,0 +1,659 @@
+{
+  "source": "v1853.exe embedded SWF",
+  "tool": "JPEXS FFDec 26.4.0",
+  "assets": [
+    {
+      "file": "assets/hero-original.png",
+      "source_sprite": 1292,
+      "source_frame": 1,
+      "role": "hero.body",
+      "sha256": "1963fa5a81e528507d88c6b953e77e833b57b6134acf71c9bb2da415e134af43"
+    },
+    {
+      "file": "assets/pub-original.png",
+      "source_sprite": 3870,
+      "source_frame": 1,
+      "role": "arena background: Ye Olde Pub",
+      "sha256": "ded4b6d35ff93e5c4bc2d50bb3358b19605b00fd8a8e9ee220914442a72d6be8"
+    },
+    {
+      "file": "assets/training-original.png",
+      "source_sprite": 3870,
+      "source_frame": 2,
+      "role": "training arena",
+      "sha256": "0ad709492c1ff6d2e7e7a97511f595f33eb73326c7f491d3fe4090fb8d3f04c0"
+    },
+    {
+      "file": "assets/dummy-2.png",
+      "source_sprite": 4652,
+      "source_frame": 2,
+      "role": "training arena",
+      "sha256": "32839c265aeb67466057e6084a6ec9c8a25099b31c27e0b69487fbe6850a7502"
+    },
+    {
+      "file": "assets/dummy-3.png",
+      "source_sprite": 4652,
+      "source_frame": 3,
+      "role": "training arena",
+      "sha256": "32839c265aeb67466057e6084a6ec9c8a25099b31c27e0b69487fbe6850a7502"
+    },
+    {
+      "file": "assets/dummy-4.png",
+      "source_sprite": 4652,
+      "source_frame": 4,
+      "role": "training arena",
+      "sha256": "dffa988ecb0d4c15373e11397125fb5720a662aa0fa2df51702dc274ddbbe2e2"
+    },
+    {
+      "file": "assets/advanced-original.png",
+      "source_sprite": 3870,
+      "source_frame": 3,
+      "sha256": "9541bb7e8847a935db415c01c990bc46795654b11439ffbb08177de6dc971e0c"
+    },
+    {
+      "file": "assets/forest-original.png",
+      "source_sprite": 3870,
+      "source_frame": 4,
+      "sha256": "07f171504b809485616bf9d9dfda16546b5fe1637f3967d1b10d0c5450ec8bd7"
+    },
+    {
+      "file": "assets/enemy-2.png",
+      "source_sprite": 4652,
+      "source_frame": 2,
+      "sha256": "32839c265aeb67466057e6084a6ec9c8a25099b31c27e0b69487fbe6850a7502"
+    },
+    {
+      "file": "assets/enemy-3.png",
+      "source_sprite": 4652,
+      "source_frame": 3,
+      "sha256": "32839c265aeb67466057e6084a6ec9c8a25099b31c27e0b69487fbe6850a7502"
+    },
+    {
+      "file": "assets/enemy-4.png",
+      "source_sprite": 4652,
+      "source_frame": 4,
+      "sha256": "dffa988ecb0d4c15373e11397125fb5720a662aa0fa2df51702dc274ddbbe2e2"
+    },
+    {
+      "file": "assets/enemy-5.png",
+      "source_sprite": 4652,
+      "source_frame": 5,
+      "sha256": "2f97f4bbb6fb9c807e22fc8535bb075da58192d1e470b4ca5073b34f6176e9d8"
+    },
+    {
+      "file": "assets/enemy-6.png",
+      "source_sprite": 4652,
+      "source_frame": 6,
+      "sha256": "4b17f31bfee9c61fefa0d1d333c1a5f37303baeef2e5e88ad1fbeaa977fc1397"
+    },
+    {
+      "file": "assets/enemy-7.png",
+      "source_sprite": 4652,
+      "source_frame": 7,
+      "sha256": "42cd4a06c7cc3b2f96efe691c7a974ae9a83c577b4b814b185ca14863baac7b8"
+    },
+    {
+      "file": "assets/enemy-8.png",
+      "source_sprite": 4652,
+      "source_frame": 8,
+      "sha256": "7254b17e41e06c613293da3c606485f74d97824df2ddce9702b43233124f6db5"
+    },
+    {
+      "file": "assets/enemy-9.png",
+      "source_sprite": 4652,
+      "source_frame": 9,
+      "sha256": "69977a1e68b56afe759961d5653cc415fb0575d8f653fc691b3a7209a541409e"
+    },
+    {
+      "file": "assets/enemy-10.png",
+      "source_sprite": 4652,
+      "source_frame": 10,
+      "sha256": "8cfd1445bb552a5a97841110ef5d72204ff9c9f0c3c47e543b22c4fdb23ee7ba"
+    },
+    {
+      "file": "assets/enemy-11.png",
+      "source_sprite": 4652,
+      "source_frame": 11,
+      "sha256": "30146a445411bc274b41dd1cb05a6196320e56d0a20b02aa70277865512036ae"
+    },
+    {
+      "file": "assets/enemy-12.png",
+      "source_sprite": 4652,
+      "source_frame": 12,
+      "sha256": "cc134e01d5121cd7304c2594ab364631d48bbf55ab8665cc9c2c95fa71a8c16f"
+    },
+    {
+      "file": "assets/enemy-13.png",
+      "source_sprite": 4652,
+      "source_frame": 13,
+      "sha256": "9edf382fdbce0ff3a2aa035ebfffa0be7b8f7c331e95c3e04ec0e256308b9a63"
+    },
+    {
+      "file": "assets/enemy-14.png",
+      "source_sprite": 4652,
+      "source_frame": 14,
+      "sha256": "66a7b9aa65e4840a13cf0c08191e6fc34258596211140f89b8d660fe35afc9a1"
+    },
+    {
+      "file": "assets/enemy-15.png",
+      "source_sprite": 4652,
+      "source_frame": 15,
+      "sha256": "77f67659c8c20a60dcdbeddba68064fc304c328178dfa01d78d96d6c2fc37cc0"
+    },
+    {
+      "file": "assets/enemy-16.png",
+      "source_sprite": 4652,
+      "source_frame": 16,
+      "sha256": "4a65a52380ac0859a413aab182a0406cd45122091590c09f10a851974513d8f4"
+    },
+    {
+      "file": "assets/enemy-17.png",
+      "source_sprite": 4652,
+      "source_frame": 17,
+      "sha256": "dd949a754b821a141a42b51ac671d1aca7a523a26c247c96d0ce463bb40249ef"
+    },
+    {
+      "file": "assets/enemy-18.png",
+      "source_sprite": 4652,
+      "source_frame": 18,
+      "sha256": "fe9b5c5b589372633b35cbb53661bfdcb2c8ecae5b5cb00eddb10939286c9a6f"
+    },
+    {
+      "file": "assets/enemy-19.png",
+      "source_sprite": 4652,
+      "source_frame": 19,
+      "sha256": "0ae649ccc774db66b7ea133c7e8a7deecf47c3044863cfc6701f400b142be799"
+    },
+    {
+      "file": "assets/enemy-20.png",
+      "source_sprite": 4652,
+      "source_frame": 20,
+      "sha256": "5822fce534a8ed959416b36c2e740ea26936400efe485eafbba15bc00c2450b7"
+    },
+    {
+      "file": "assets/enemy-21.png",
+      "source_sprite": 4652,
+      "source_frame": 21,
+      "sha256": "6c2839d1d12d4a2601fa9cc20c62af865c8babf2ca44dd3edf5d321766c85fc1"
+    },
+    {
+      "file": "assets/enemy-22.png",
+      "source_sprite": 4652,
+      "source_frame": 22,
+      "sha256": "1c38edcbfab162f3a5721679cc9dc8d023a7ca37f42f43620d291290b322d0f3"
+    },
+    {
+      "file": "assets/enemy-23.png",
+      "source_sprite": 4652,
+      "source_frame": 23,
+      "sha256": "1bbc3b9b322478351b40e2e8cf48ea291206398ebe02c88c47a8fbe21724d148"
+    },
+    {
+      "file": "assets/enemy-24.png",
+      "source_sprite": 4652,
+      "source_frame": 24,
+      "sha256": "47fae4c6abe6da0dffa8579668691264d1db5e7db2ee90f03532d7137d36743d"
+    },
+    {
+      "file": "assets/enemy-25.png",
+      "source_sprite": 4652,
+      "source_frame": 25,
+      "sha256": "f2ccbbba136e04c3ca242955f591493768a091cf77fb2a84ce92ad4332342352"
+    },
+    {
+      "file": "assets/enemy-26.png",
+      "source_sprite": 4652,
+      "source_frame": 26,
+      "sha256": "0aa67527b5f26d649a58aa493f2604e82acae1703e4f620c162a994711115696"
+    },
+    {
+      "file": "assets/enemy-27.png",
+      "source_sprite": 4652,
+      "source_frame": 27,
+      "sha256": "852f4372aa189afb8633902c3b693536eca1e6e3c33b87e1176f1d4a5d616c30"
+    },
+    {
+      "file": "assets/enemy-28.png",
+      "source_sprite": 4652,
+      "source_frame": 28,
+      "sha256": "1abd9546f9169be21064f51a92ec5ce27a9c758226b8b38e00b21ccd3c658706"
+    },
+    {
+      "file": "assets/enemy-29.png",
+      "source_sprite": 4652,
+      "source_frame": 29,
+      "sha256": "7d6c984d0a5185a430a7a28f63554c84fe54595077b1470e70bce44ecc652f7c"
+    },
+    {
+      "file": "assets/enemy-30.png",
+      "source_sprite": 4652,
+      "source_frame": 30,
+      "sha256": "b2aac178fb4443b31c558ac8f874d523b4b162c513ad64485fb42cb9e935cfb4"
+    },
+    {
+      "file": "assets/enemy-31.png",
+      "source_sprite": 4652,
+      "source_frame": 31,
+      "sha256": "09847c2107a846a6253c99f76749951c7cb94bc4ea6e45896abfa681826f4665"
+    },
+    {
+      "file": "assets/enemy-32.png",
+      "source_sprite": 4652,
+      "source_frame": 32,
+      "sha256": "1ffd0eb87e8c5e707fd1ef3615ad6c205fb50ccac3b5ee29c85085f24b20d318"
+    },
+    {
+      "file": "assets/enemy-33.png",
+      "source_sprite": 4652,
+      "source_frame": 33,
+      "sha256": "4720dbc6f55a18b11a4fb4ceb497962333c56021d79abfe849bdbcea7bccd450"
+    },
+    {
+      "file": "assets/enemy-34.png",
+      "source_sprite": 4652,
+      "source_frame": 34,
+      "sha256": "ad6d24090a66f6a60304dafd212b6307ae6a43e4fbd08e6bffa1b94ee4577463"
+    },
+    {
+      "file": "assets/weapon-101.png",
+      "source_sprite": 543,
+      "source_frame": 101,
+      "sha256": "2689816f37b930c79284cd21f9d2c4366cdc44cd624d584b3f3bd7474ab87d9c"
+    },
+    {
+      "file": "assets/weapon-102.png",
+      "source_sprite": 543,
+      "source_frame": 102,
+      "sha256": "39d34bcf9eef72124640bfe12042d57ba4cb0b6d1d31ee3bb3c3e94fb0b9fefd"
+    },
+    {
+      "file": "assets/weapon-103.png",
+      "source_sprite": 543,
+      "source_frame": 103,
+      "sha256": "b33e4376df017b52d45034ecc65326e79008071d3298fc0a764ca3fbcbbdc306"
+    },
+    {
+      "file": "assets/weapon-105.png",
+      "source_sprite": 543,
+      "source_frame": 105,
+      "sha256": "ec5d9299b4865c5f7b9ed58916f1a63ba5e0cffe16a0a8af49e25b912109f5c4"
+    },
+    {
+      "file": "assets/weapon-110.png",
+      "source_sprite": 543,
+      "source_frame": 110,
+      "sha256": "90ba705d95939fe16f0633a2b364a8c412f1d5b9d76241e5f725e0373a8d81e2"
+    },
+    {
+      "file": "assets/weapon-115.png",
+      "source_sprite": 543,
+      "source_frame": 115,
+      "sha256": "98933a8dcde0d8ceff250249df417c10c81899197f08958aa68b59d7ef58cd83"
+    },
+    {
+      "file": "assets/weapon-120.png",
+      "source_sprite": 543,
+      "source_frame": 120,
+      "sha256": "beaa9a263ea6970dc492d524f7d080f1244d8118c5eaf47b95d69ff869760512"
+    },
+    {
+      "file": "assets/weapon-125.png",
+      "source_sprite": 543,
+      "source_frame": 125,
+      "sha256": "85c0fdff0a6d489e09b5cffa0c91cd24df29756eba92e9480efd4ec17d93e911"
+    },
+    {
+      "file": "assets/weapon-130.png",
+      "source_sprite": 543,
+      "source_frame": 130,
+      "sha256": "279ed425b5b33eb44894c322625506c1dc208df20f16732cef21f799156f6db3"
+    },
+    {
+      "file": "assets/weapon-201.png",
+      "source_sprite": 543,
+      "source_frame": 201,
+      "sha256": "c0d63958af54abc180f8cfb2cb1616a7d67298359f7b1350e26397dd4f42c114"
+    },
+    {
+      "file": "assets/garden-plot.png",
+      "source_sprite": 3091,
+      "source_frame": 1,
+      "sha256": "6a95b719f882ef6bf5cf8fa571bc0a6a8728349410dd5683720aede7d2b15ae7"
+    },
+    {
+      "file": "assets/garden-growing-1.png",
+      "source_sprite": 3107,
+      "source_frame": 2,
+      "sha256": "7b290fe9e57d32807834d459a4f6f6b246f67bf992e83eacc7a269d9887b3f26"
+    },
+    {
+      "file": "assets/garden-growing-2.png",
+      "source_sprite": 3107,
+      "source_frame": 3,
+      "sha256": "a331add8db4067159449168538f5101ce002dd315777bc462e3b85dd6d300332"
+    },
+    {
+      "file": "assets/garden-growing-3.png",
+      "source_sprite": 3107,
+      "source_frame": 4,
+      "sha256": "ee5504130b2d95664c7965d959f737ac8d32d09ee2ab8b64feb6726d99ba1254"
+    },
+    {
+      "file": "assets/garden-growing-4.png",
+      "source_sprite": 3107,
+      "source_frame": 5,
+      "sha256": "e070efe9f88b6d8d29ee488232fd157f029ce0bc18139f2435eb59c37eefc585"
+    },
+    {
+      "file": "assets/garden-growing-5.png",
+      "source_sprite": 3107,
+      "source_frame": 6,
+      "sha256": "a13a40a69459269c324a29fc72a307a4c7dbdb80f3d6a2f77031853e9ec3b59e"
+    },
+    {
+      "file": "assets/garden-growing-6.png",
+      "source_sprite": 3107,
+      "source_frame": 7,
+      "sha256": "bbf59835fa3d481fb17842098f84e74260b5372d7e974815347ac3c141ff0ad6"
+    },
+    {
+      "file": "assets/garden-growing-7.png",
+      "source_sprite": 3107,
+      "source_frame": 8,
+      "sha256": "9220bda226bc129cc8ef3c80c49f5ea13d3da1468ee6f87fcafec1010de3c60f"
+    },
+    {
+      "file": "assets/garden-growing-8.png",
+      "source_sprite": 3107,
+      "source_frame": 9,
+      "sha256": "4102039f2d604051030b381d0298e6d94deb8c2cddc524cdbf39468c4f171801"
+    },
+    {
+      "file": "assets/garden-ready-1.png",
+      "source_sprite": 3135,
+      "source_frame": 2,
+      "sha256": "c12f3079e2bcada25f3b98bfd1378c2e5dd809d4056787c7a0f885851e317ea5"
+    },
+    {
+      "file": "assets/garden-ready-2.png",
+      "source_sprite": 3135,
+      "source_frame": 3,
+      "sha256": "03870b3778a8a34c41f7b610821d52a41a5975d58f6e81b84ca02feac413296e"
+    },
+    {
+      "file": "assets/garden-ready-3.png",
+      "source_sprite": 3135,
+      "source_frame": 4,
+      "sha256": "3ec154bf5935af52d9bddafbfa837c11bc4118c29ab732eb796c875bfb0b171b"
+    },
+    {
+      "file": "assets/garden-ready-4.png",
+      "source_sprite": 3135,
+      "source_frame": 5,
+      "sha256": "85e06e8c395b5a397ac14c7572b760bea0a943fccb210341a8cf9c35656aeb55"
+    },
+    {
+      "file": "assets/garden-ready-5.png",
+      "source_sprite": 3135,
+      "source_frame": 6,
+      "sha256": "2e79f63c379e66f70c832fae2847430b83a018c773212f43b8c9457ef9a0da96"
+    },
+    {
+      "file": "assets/garden-ready-6.png",
+      "source_sprite": 3135,
+      "source_frame": 7,
+      "sha256": "e62286c32d300b8b662ebb3eca96dea2d43d1ee67f9336dbae63e98ced162225"
+    },
+    {
+      "file": "assets/garden-ready-7.png",
+      "source_sprite": 3135,
+      "source_frame": 8,
+      "sha256": "d57e9721872f0ddf76f4ca1629d5281f5d6aa438caf24d013df042ed0f2615ba"
+    },
+    {
+      "file": "assets/garden-ready-8.png",
+      "source_sprite": 3135,
+      "source_frame": 9,
+      "sha256": "a8a826871309bbc7ed1e6fb426d1f8c22eb0a0f1b211e2d53ae734425245ca70"
+    },
+    {
+      "file": "assets/whack-1.png",
+      "source_sprite": 6435,
+      "source_frame": 1,
+      "role": "Whack-a-greg tile",
+      "sha256": "f984f92d052c799cf7ac13c4f08f1b90e5aed4189cd0906a12187fe4974de448"
+    },
+    {
+      "file": "assets/whack-2.png",
+      "source_sprite": 6435,
+      "source_frame": 2,
+      "role": "Whack-a-greg tile",
+      "sha256": "4db4ddf378c20777e06b93eaca3c79770e425156aeba0533c15d3a50a486c415"
+    },
+    {
+      "file": "assets/whack-3.png",
+      "source_sprite": 6435,
+      "source_frame": 3,
+      "role": "Whack-a-greg tile",
+      "sha256": "5ff5b113f0802110872d71bedd86d2c0d7c1fecd25fd3a0770c8cca8e4579814"
+    },
+    {
+      "file": "assets/whack-4.png",
+      "source_sprite": 6435,
+      "source_frame": 4,
+      "role": "Whack-a-greg tile",
+      "sha256": "3e37cc2199fda9b9b1d1f9f2a4e5f064994030e6dcb21c0b5f28f0c2babe544e"
+    },
+    {
+      "file": "assets/whack-5.png",
+      "source_sprite": 6435,
+      "source_frame": 5,
+      "role": "Whack-a-greg tile",
+      "sha256": "9169ebf7018e6b52a608620439e11373d4ed1dd858e044c0392ee8e8ad30c2f1"
+    },
+    {
+      "file": "assets/whack-6.png",
+      "source_sprite": 6435,
+      "source_frame": 6,
+      "role": "Whack-a-greg tile",
+      "sha256": "d5f99569ef165b14c749db7f4c7c7d3e40fd63ce31b6ada67c9c9ef510523a52"
+    },
+    {
+      "file": "assets/whack-7.png",
+      "source_sprite": 6435,
+      "source_frame": 7,
+      "role": "Whack-a-greg tile",
+      "sha256": "3e37cc2199fda9b9b1d1f9f2a4e5f064994030e6dcb21c0b5f28f0c2babe544e"
+    },
+    {
+      "file": "assets/pong-paddle.png",
+      "source_sprite": 6269,
+      "source_frame": 1,
+      "role": "Pong paddle",
+      "sha256": "d860f0e53aca2e83101f0f2f7a33d5c8870365dd9517d8d96358fc0827d1f7f9"
+    },
+    {
+      "file": "assets/pong-ball.png",
+      "source_sprite": 6271,
+      "source_frame": 1,
+      "role": "Pong ball",
+      "sha256": "1f0889d1979a76ced135e4c789adde5ce83224f58975249c66d4bb6a5b548afe"
+    },
+    {
+      "file": "assets/avoid-beam.png",
+      "source_sprite": 6308,
+      "source_frame": 1,
+      "role": "Ultimate Avoidance beam",
+      "sha256": "55e8a217a39f0f3ff7cc8ba3e7989c21fc8e6acbb426b2a270d24e82384976c6"
+    },
+    {
+      "file": "assets/avoid-player.png",
+      "source_sprite": 6326,
+      "source_frame": 1,
+      "role": "Ultimate Avoidance player",
+      "sha256": "d25c82f77af07e336f137d5055b295404f9846c32fb4daa4bde1f9cfbd2e41b8"
+    },
+    {
+      "file": "assets/avoid-multiplier.png",
+      "source_sprite": 6321,
+      "source_frame": 1,
+      "role": "Ultimate Avoidance multiplier",
+      "sha256": "9b5a3cd7cbc375a7834ade02f4e7e3cc24d337b349714e919a2ce832df3938e1"
+    },
+    {
+      "file": "assets/avoid-coin.png",
+      "source_sprite": 6278,
+      "source_frame": 1,
+      "role": "Ultimate Avoidance coin",
+      "sha256": "f835d7d41823eba71ae9ca9081014060556b31d8f8a2a94ec814b0b930c7627b"
+    },
+    {
+      "file": "assets/mind-1.png",
+      "source_sprite": 6480,
+      "source_frame": 1,
+      "role": "MindSweeper tile",
+      "sha256": "0a9fb9e94fc8d922acb6b7f2183f64ad74140a5984c961f9c7fa987b70c9e88e"
+    },
+    {
+      "file": "assets/mind-2.png",
+      "source_sprite": 6480,
+      "source_frame": 2,
+      "role": "MindSweeper tile",
+      "sha256": "1a96d8105d1aa789a9efd157d0d9762ad80330ec3b940b2e31dfca21ba88acbb"
+    },
+    {
+      "file": "assets/mind-3.png",
+      "source_sprite": 6480,
+      "source_frame": 3,
+      "role": "MindSweeper tile",
+      "sha256": "1a96d8105d1aa789a9efd157d0d9762ad80330ec3b940b2e31dfca21ba88acbb"
+    },
+    {
+      "file": "assets/mind-4.png",
+      "source_sprite": 6480,
+      "source_frame": 4,
+      "role": "MindSweeper tile",
+      "sha256": "1a96d8105d1aa789a9efd157d0d9762ad80330ec3b940b2e31dfca21ba88acbb"
+    },
+    {
+      "file": "assets/mind-5.png",
+      "source_sprite": 6480,
+      "source_frame": 5,
+      "role": "MindSweeper tile",
+      "sha256": "1a96d8105d1aa789a9efd157d0d9762ad80330ec3b940b2e31dfca21ba88acbb"
+    },
+    {
+      "file": "assets/mind-6.png",
+      "source_sprite": 6480,
+      "source_frame": 6,
+      "role": "MindSweeper tile",
+      "sha256": "1a96d8105d1aa789a9efd157d0d9762ad80330ec3b940b2e31dfca21ba88acbb"
+    },
+    {
+      "file": "assets/mind-7.png",
+      "source_sprite": 6480,
+      "source_frame": 7,
+      "role": "MindSweeper tile",
+      "sha256": "1a96d8105d1aa789a9efd157d0d9762ad80330ec3b940b2e31dfca21ba88acbb"
+    },
+    {
+      "file": "assets/mind-8.png",
+      "source_sprite": 6480,
+      "source_frame": 8,
+      "role": "MindSweeper tile",
+      "sha256": "1a96d8105d1aa789a9efd157d0d9762ad80330ec3b940b2e31dfca21ba88acbb"
+    },
+    {
+      "file": "assets/mind-9.png",
+      "source_sprite": 6480,
+      "source_frame": 9,
+      "role": "MindSweeper tile",
+      "sha256": "1a96d8105d1aa789a9efd157d0d9762ad80330ec3b940b2e31dfca21ba88acbb"
+    },
+    {
+      "file": "assets/balance-block-1.png",
+      "source_sprite": 6564,
+      "source_frame": 1,
+      "role": "balance-block",
+      "sha256": "bce3e486a58f2f8b47e970765c26369fa8fb0482f2102aad9b346559980a86e0"
+    },
+    {
+      "file": "assets/balance-block-2.png",
+      "source_sprite": 6564,
+      "source_frame": 2,
+      "role": "balance-block",
+      "sha256": "45a38eac3ddc2dfe1b6ad4ba9bea949c8c3de866ab306ce32875cf3bd65a93c1"
+    },
+    {
+      "file": "assets/balance-block-3.png",
+      "source_sprite": 6564,
+      "source_frame": 3,
+      "role": "balance-block",
+      "sha256": "3814fa57bbd6decbe0e8d50b1e775dbced31889f6e75fcfde2edc0f40a0d505b"
+    },
+    {
+      "file": "assets/balance-block-4.png",
+      "source_sprite": 6564,
+      "source_frame": 4,
+      "role": "balance-block",
+      "sha256": "0e9eba3009ad7cd0f0d6a58e231fb731abbdc4d3de5a2745cda4e3880648e8a0"
+    },
+    {
+      "file": "assets/balance-block-5.png",
+      "source_sprite": 6564,
+      "source_frame": 5,
+      "role": "balance-block",
+      "sha256": "6f7ace955c8f1cae4cdf6be103709481c495d18a336d4f8b55e7697d8037475c"
+    },
+    {
+      "file": "assets/count-shape-2.png",
+      "source_sprite": 6595,
+      "source_frame": 2,
+      "role": "count-shape",
+      "sha256": "d6efa42050e4010a29745951662d25f494f8a94b20a004d4f897674dd141f3f8"
+    },
+    {
+      "file": "assets/count-shape-3.png",
+      "source_sprite": 6595,
+      "source_frame": 3,
+      "role": "count-shape",
+      "sha256": "0f5ea3e00d69f94294db0e34637db56f2b3af6a95b84d9568dbafc4d1365bdb2"
+    },
+    {
+      "file": "assets/count-shape-4.png",
+      "source_sprite": 6595,
+      "source_frame": 4,
+      "role": "count-shape",
+      "sha256": "197f142d64b4b41ada203c8d9bf3b39d96bc9195fc172f354b6031015293f068"
+    },
+    {
+      "file": "assets/count-shape-5.png",
+      "source_sprite": 6595,
+      "source_frame": 5,
+      "role": "count-shape",
+      "sha256": "5dcb71ca96c902b3cc7f00fa5230999f786fd9e27bffdbfddc422fe3bcacf37a"
+    },
+    {
+      "file": "assets/mmrx-note-1.png",
+      "source_sprite": 6230,
+      "source_frame": 1,
+      "role": "mmrx-note",
+      "sha256": "b1876b22f356d916ff2eb946a8744d5d2f3711ed609392f5f31fc4488547cd2e"
+    },
+    {
+      "file": "assets/mmrx-note-2.png",
+      "source_sprite": 6230,
+      "source_frame": 2,
+      "role": "mmrx-note",
+      "sha256": "b8d366c197a1ee7b7601334a17da10cdb7ad27943b148c2075304851cccddb6a"
+    },
+    {
+      "file": "assets/mmrx-note-3.png",
+      "source_sprite": 6230,
+      "source_frame": 3,
+      "role": "mmrx-note",
+      "sha256": "d5527b144ede8f9d320d164d4faa8a36079c3e55c66c14c6754e732b7f6012e6"
+    }
+  ],
+  "note": "PNG files copied byte-for-byte from sprite export. SVG viewBox selects the source background stage bounds without repainting. Hero reward bounce is a new CSS effect, not a recovered animation."
+}

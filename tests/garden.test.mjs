@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import {newGame,restore,claim} from '../site/game.mjs';
+import {ensureArena,travel} from '../site/combat.mjs';
+import {TREES,ensureGarden,plantTree,harvestTree,harvestAll,advanceGarden,slotState,clearTree,buyPlot,plantAll} from '../site/garden.mjs';
+const r=newGame(),g=ensureGarden(r);assert.equal(TREES.length,8);assert.equal(g.capacity,1);
+assert.equal(plantTree(r,1,1,0,()=>.5),false);assert.equal(plantTree(r,0,2,0,()=>.5),false);
+assert.equal(plantTree(r,0,1,0,()=>.5),true);assert.equal(g.plots[0].value,6600);assert.equal(plantTree(r,0,1,0),false);
+assert.equal(slotState(r,0,29999).state,'growing');assert.equal(harvestTree(r,0,29999),null);
+const result=harvestTree(r,0,30000);assert.equal(result.coin,43560);assert.equal(result.exp,13068);assert.equal(result.points,5);assert.equal(result.green,500);assert.equal(result.blue,1);
+assert.equal(g.points,5);assert.equal(g.exp,5);assert.equal(g.slotExp[0],5);assert.equal(g.harvests,1);
+assert.equal(harvestTree(r,0,30000),null);assert.equal(slotState(r,0,59999).state,'growing');assert.equal(slotState(r,0,60000).state,'ready');
+assert.ok(g.plots[0]);assert.equal(g.plots[0].expiresAt,315000);assert.ok(restore(JSON.stringify(r)));
+const loaded=restore(JSON.stringify(r));assert.equal(slotState(loaded,0,60000).state,'ready');assert.equal(slotState(loaded,0,10000).state,'growing');
+advanceGarden(loaded,315000);assert.equal(loaded.garden.plots[0],null);assert.equal(harvestTree(loaded,0,315000),null);
+const before=JSON.stringify(g);assert.equal(clearTree(r,-1),false);assert.equal(JSON.stringify(g),before);
+assert.equal(clearTree(r,0),true);r.save.coin=25000;g.points=5;
+assert.equal(plantTree(r,0,2,70000,()=>.5),true);assert.equal(r.save.coin,0);assert.equal(g.points,0);assert.equal(g.plots[0].readyAt,340000);assert.equal(g.plots[0].expiresAt,2590000);
+assert.equal(buyPlot(r),false);r.save.coin=500000;g.points=50;assert.equal(buyPlot(r),true);assert.equal(g.capacity,2);assert.equal(r.save.coin,0);assert.equal(g.points,0);assert.equal(plantAll(r,1,80000,()=>.5),1);
+const plots=JSON.stringify(g.plots);assert.equal(plantAll(r,1,80000),0);assert.equal(JSON.stringify(g.plots),plots);
+const multi=harvestAll(r,340000);assert.equal(multi.length,2);assert.equal(harvestAll(r,340000).length,0);assert.ok(restore(JSON.stringify(r)));
+const bad=structuredClone(r);bad.garden.plots[0].tree=99;assert.equal(restore(JSON.stringify(bad)),null);
+bad.garden=structuredClone(r.garden);bad.garden.points=-1;assert.equal(restore(JSON.stringify(bad)),null);
+bad.garden=structuredClone(r.garden);bad.garden.capacity=26;assert.equal(restore(JSON.stringify(bad)),null);
+const old=restore(JSON.stringify(newGame()));assert.equal(ensureGarden(old).capacity,1);
+const side=newGame();ensureArena(side);travel(side,1,()=>0);plantTree(side,0,1,0,()=>.5);side.progPercent=100;assert.ok(claim(side,()=>.5));assert.equal(side.arena.zone,1);assert.ok(harvestTree(side,0,30000));assert.equal(side.arena.zone,1);
+// Original high-grade threshold: plot1 reaches grade12 at 600k slot EXP.
+const veteran=newGame(),vg=ensureGarden(veteran);vg.slotExp[0]=600000;assert.ok(plantTree(veteran,0,1,0,()=>.999));assert.ok(vg.plots[0].value>13000);assert.ok(restore(JSON.stringify(veteran)));
+console.log('PASS: 8 original trees, Free Tree 30s/315s repeat harvest, source rewards/fees, slot growth and expansion, batch actions, offline elapsed expiry, duplicate guards, legacy/invalid saves and parallel arena/progress rewards.');

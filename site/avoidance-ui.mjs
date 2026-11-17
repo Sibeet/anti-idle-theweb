@@ -1,0 +1,22 @@
+import {ensureArcade} from './arcade.mjs';
+import {startAvoidance,stepAvoidance,finishAvoidance,shieldAvoidance} from './avoidance.mjs';
+export function createAvoidanceUI({getRoot,save,log,refresh,isActive}){
+ const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US');let owner=getRoot(),game=null,result=null,last=performance.now(),input={};
+ const clearInput=()=>{input={};};
+ function settle(){if(!game||game.settled)return;result=finishAvoidance(getRoot(),game);clearInput();save();log('Ultimate Avoidance: '+fmt(result.score)+' | +'+fmt(result.coin)+' Y / +'+fmt(result.exp)+' EXP');}
+ function update(){const now=performance.now();if(owner!==getRoot()){owner=getRoot();game=null;result=null;clearInput();}else if(game?.running){if(!isActive())clearInput();stepAvoidance(getRoot(),game,(now-last)/1000,input);if(!game.running)settle();}last=now;}
+ $('avoidStart').onclick=()=>{if(game?.running)return;game=startAvoidance();result=null;clearInput();last=performance.now();refresh();};$('avoidEnd').onclick=()=>{update();settle();refresh();};$('avoidShieldButton').onclick=()=>{update();if(game)shieldAvoidance(game);refresh();};
+ const keys={ArrowUp:'up',KeyW:'up',ArrowDown:'down',KeyS:'down',ArrowLeft:'left',KeyA:'left',ArrowRight:'right',KeyD:'right',ShiftLeft:'freeze',ShiftRight:'freeze',ControlLeft:'shield',ControlRight:'shield',Space:'shield'};
+ function handleKey(e,release=false){const field=keys[e.code];if(release){if(field)input[field]=false;return;}if(!field||!isActive()||!game?.running||e.metaKey||e.altKey||e.ctrlKey&&field!=='shield'||['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)||e.code==='Space'&&e.target?.closest?.('button'))return;e.preventDefault();if(['up','down','left','right'].includes(field)){delete input.x;delete input.y;}input[field]=true;}
+ const board=$('avoidBoard');function point(e){if(!game?.running||!isActive())return;const rect=board.getBoundingClientRect();if(rect.width>0&&rect.height>0){input.x=(e.clientX-rect.left)/rect.width*500;input.y=(e.clientY-rect.top)/rect.height*350;}}
+ board.onpointerdown=e=>{e.preventDefault();point(e);board.setPointerCapture?.(e.pointerId);};board.onpointermove=point;board.onpointercancel=board.onlostpointercapture=()=>{delete input.x;delete input.y;};
+ function draw(){const g=game,player=g?.player??{x:250,y:175};$('avoidField').setAttribute('transform','translate(250 162.5) rotate('+(g?.angle??0)+')');
+ for(let i=0;i<4;i++){const b=g?.beams[i],x=b?(i<2?b.cross:b.position):0,y=b?(i<2?b.position:b.cross):-500;const image=$('avoidBeam'+i);image.setAttribute('transform','translate('+x+' '+y+')'+(i>=2?' rotate(90)':''));image.style.opacity=g&&g.avoided>=[0,5,25,50][i]?1:0;}
+ const pickup=g?.pickup;$('avoidPickup').setAttribute('transform','translate('+(pickup?.x??0)+' '+(pickup?.y??0)+')');$('avoidPickup').style.opacity=(pickup?.alpha??0)/100;$('avoidPickupLabel').textContent=(g?.multiplier??1)+1+'×';
+ const coin=g?.coin;$('avoidCoin').setAttribute('x',(coin?.x??0)-12);$('avoidCoin').setAttribute('y',(coin?.y??0)-12);$('avoidCoin').style.opacity=coin?Math.max(0,Math.min(1,(coin.delay-2400)/100)):0;
+ $('avoidPlayer').setAttribute('x',player.x-7.5);$('avoidPlayer').setAttribute('y',player.y-7.5);$('avoidPlayer').style.opacity=g?.life===0&&g.invincibility>0?(Math.floor(g.elapsed*8)%2?.3:1):1;$('avoidShieldRing').setAttribute('cx',player.x);$('avoidShieldRing').setAttribute('cy',player.y);$('avoidShieldRing').style.opacity=g&&g.shieldTime>=-.2?1:0;}
+ function frame(){update();draw();}
+ function render(){frame();const record=ensureArcade(getRoot()).avoidance;$('avoidBest').textContent=fmt(record?.best??0);$('avoidPlays').textContent=fmt(record?.plays??0);$('avoidScore').textContent=fmt(game?.score??0);$('avoidCount').textContent=fmt(game?.avoided??0);$('avoidMultiplier').textContent=(game?.multiplier??1)+'×';$('avoidLife').textContent=game?.life===0?(game.invincibility>0?game.invincibility.toFixed(1)+'s INVINCIBLE':'FINAL CHANCE'):'1';$('avoidCharge').textContent=(game?.shieldCharge??1).toFixed(2)+' / 3';$('avoidChargeFill').style.width=(game?.shieldCharge??1)/3*100+'%';
+ $('avoidMessage').textContent=result?'FINISH · +'+fmt(result.coin)+' Y · +'+fmt(result.exp)+' EXP · +'+fmt(result.green)+' G · +'+fmt(result.blue)+' B':game?.message??'ULTIMATE AVOIDANCE';$('avoidStart').disabled=!!game?.running;$('avoidEnd').disabled=!game?.running;$('avoidShieldButton').disabled=!game?.running||game.shieldTime>=0||game.shieldCharge<1;}
+ return {render,frame,handleKey,clearInput,running:()=>!!game?.running};
+}

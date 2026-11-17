@@ -1,0 +1,28 @@
+import {createNativeArcadeUI} from './native-arcade-ui.mjs';
+import {createMindUI} from './mind-ui.mjs';
+import {createAvoidanceUI} from './avoidance-ui.mjs';
+import {createPongUI} from './pong-ui.mjs';
+import {createMathUI} from './math-ui.mjs';
+import {ensureArcade,startWhack,stepWhack,hitWhack,finishWhack} from './arcade.mjs';
+export function createArcadeUI({getRoot,save,log,refresh}){
+ const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US');let selected='whack',owner=getRoot(),game=null,last=performance.now(),result=null;
+ const mathUI=createMathUI({getRoot,save,log,refresh,isActive:()=>selected==='math'&&!$('arcade').classList.contains('hidden')});
+ const pongUI=createPongUI({getRoot,save,log,refresh,isActive:()=>selected==='pong'&&!$('arcade').classList.contains('hidden')});
+ const avoidanceUI=createAvoidanceUI({getRoot,save,log,refresh,isActive:()=>selected==='avoidance'&&!$('arcade').classList.contains('hidden')});
+ const mindUI=createMindUI({getRoot,save,log,refresh,isActive:()=>selected==='mind'&&!$('arcade').classList.contains('hidden')});
+ const nativeGames=['balance','count','mmrx'].map(kind=>createNativeArcadeUI({kind,getRoot,save,log,refresh,isActive:()=>selected===kind&&!$('arcade').classList.contains('hidden')}));
+ function choose(name){if(game?.running||mathUI.running()||pongUI.running()||avoidanceUI.running()||mindUI.running()||nativeGames.some(g=>g.running()))return;selected=name;refresh();}
+ $('selectWhack').onclick=()=>choose('whack');$('selectMath').onclick=()=>choose('math');$('selectPong').onclick=()=>choose('pong');$('selectAvoidance').onclick=()=>choose('avoidance');$('selectMind').onclick=()=>choose('mind');for(const [kind,id] of [['balance','Balance'],['count','Count'],['mmrx','Mmrx']])$('select'+id).onclick=()=>choose(kind);
+ $('whackBoard').innerHTML=Array.from({length:72},(_,i)=>`<button id="whackButton${i}" data-whack="${i}" aria-label="Empty tile ${i+1}"><img id="whackTile${i}" src="assets/whack-1.png" alt="" draggable="false"></button>`).join('');
+ function settle(){if(!game||game.settled)return;result=finishWhack(getRoot(),game);save();log('Whack-a-greg: '+fmt(result.score)+' | +'+fmt(result.coin)+' Y / +'+fmt(result.exp)+' EXP');}
+ $('whackStart').onclick=()=>{if(game?.running)return;game=startWhack();result=null;last=performance.now();refresh();};
+ $('whackEnd').onclick=()=>{settle();refresh();};
+ $('whackBoard').onclick=e=>{const b=e.target.closest('button[data-whack]');if(!b||!game)return;update();if(hitWhack(getRoot(),game,Number(b.dataset.whack))){if(!game.running)settle();refresh();}};
+ function update(){const now=performance.now();if(owner!==getRoot()){owner=getRoot();game=null;result=null;last=now;}if(game?.running){stepWhack(game,(now-last)/1000);if(!game.running)settle();}last=now;}
+ function render(){update();mathUI.render();pongUI.render();avoidanceUI.render();mindUI.render();for(const g of nativeGames)g.render();for(const [name,id] of [['whack','Whack'],['math','Math'],['pong','Pong'],['avoidance','Avoidance'],['mind','Mind'],['balance','Balance'],['count','Count'],['mmrx','Mmrx']]){$(name+'View').classList.toggle('hidden',selected!==name);$('select'+id).classList.toggle('selected',selected===name);$('select'+id).disabled=!!game?.running||mathUI.running()||pongUI.running()||avoidanceUI.running()||mindUI.running()||nativeGames.some(g=>g.running());}$('arcadeTitle').textContent=({whack:'WHACK-A-GREG',math:'MATH MASTER',pong:'PONG',avoidance:'ULTIMATE AVOIDANCE',mind:'MINDSWEEPER',balance:'BALANCE 3',count:'TRIANGLE COUNT',mmrx:'MMRX'}[selected])+' · NORMAL';const a=ensureArcade(getRoot());$('whackBest').textContent=fmt(a.best);$('whackPlays').textContent=fmt(a.plays);$('whackMedals').textContent=fmt(a.medals);$('whackWhite').textContent=fmt(a.whiteCoins);
+ $('whackScore').textContent=fmt(game?.score??0);$('whackCount').textContent=fmt(game?.hits??0);$('whackMultiplier').textContent=(game?.multiplier??1)+'×';$('whackLife').textContent=Math.ceil(game?.life??100)+'%';$('whackLifeFill').style.width=(game?.life??100)+'%';
+ $('whackMessage').textContent=result?'FINISH · +'+fmt(result.coin)+' Y · +'+fmt(result.exp)+' EXP · +'+fmt(result.green)+' G · +'+fmt(result.blue)+' B':game?.message??'WHACK-A-GREG';$('whackStart').disabled=!!game?.running;$('whackStart').textContent=game?'Play again':'Play';$('whackEnd').disabled=!game?.running;
+ for(let i=0;i<72;i++){const kind=game?.cells[i].kind??1,img=$('whackTile'+i),src='assets/whack-'+kind+'.png';if(img.getAttribute('src')!==src)img.setAttribute('src',src);$('whackButton'+i).disabled=!game?.running;$('whackButton'+i).setAttribute('aria-label',(['','Empty','Greg','Life bonus','Trap','Multiplier','White coin','Trap'][kind])+' tile '+(i+1));}
+ }
+ return {render,frame:()=>{pongUI.frame();avoidanceUI.frame();for(const g of nativeGames)g.frame();},clearInput:()=>{pongUI.clearInput();avoidanceUI.clearInput();mindUI.clearInput();},handleKey:e=>{mathUI.handleKey(e);pongUI.handleKey(e);avoidanceUI.handleKey(e);mindUI.handleKey(e);for(const g of nativeGames)g.handleKey(e);},handleKeyUp:e=>{pongUI.handleKey(e,true);avoidanceUI.handleKey(e,true);mindUI.handleKey(e,true);}};
+}

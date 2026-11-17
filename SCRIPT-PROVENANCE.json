@@ -1,0 +1,39 @@
+{
+  "source": "v1853 embedded SWF, FFDec-decompiled AS2",
+  "generated": "site/arcade-native.mjs",
+  "runtime_eval": false,
+  "adaptations": [
+    "strict ESM variable declarations",
+    "display-list stubs and web SVG renderer",
+    "MMRX deterministic 25ms simulation clock",
+    "explicit parent-before-child update order",
+    "normal difficulty, no unranked upgrades or career bonuses",
+    "Count 0..99 input and source confidence action; no count-overflow easter egg"
+  ],
+  "scripts": [
+    {
+      "path": "DefineSprite_6576/frame_1/DoAction.as",
+      "sha256": "cc37530f4cfa8fb3e4e18145a26e3a282698b68196cf13cf7a3b6beefc3ddcff"
+    },
+    {
+      "path": "DefineSprite_6576/frame_1/PlaceObject2_6564_124/CLIPACTIONRECORD onClipEvent(load).as",
+      "sha256": "fed41ed53734e8baced5649287900558950f55990a666ef957c72f4f4ecdd53b"
+    },
+    {
+      "path": "DefineSprite_6576/frame_1/PlaceObject3_6274_116/CLIPACTIONRECORD onClipEvent(enterFrame).as",
+      "sha256": "768e533ab8da2e1607dc5487267f21333e6694e2632634a924e068c7c8001e33"
+    },
+    {
+      "path": "DefineSprite_6610/frame_1/DoAction.as",
+      "sha256": "64fea03c45d5b40c5373d7f91131d980cbf3fc91e99b0fe2ac2445bcc3d3f790"
+    },
+    {
+      "path": "DefineSprite_6595/frame_1/DoAction.as",
+      "sha256": "792e47fd0d936a1742cd879c26ec2d77e0420afe9c4163f4283793d5174b9bc9"
+    },
+    {
+      "path": "DefineSprite_6547/frame_1/DoAction.as",
+      "sha256": "510ff358c98797dc2b5a544da2fb363260c91d64b13b4eaec392ea6d18134f02"
+    }
+  ]
+}
