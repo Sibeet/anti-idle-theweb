@@ -1,5 +1,5 @@
-import {TREES} from './garden-data.mjs';
-import {awardExperience} from './game.mjs';
+import {TREES} from './garden-data.mjs?v=0.20.0';
+import {awardExperience} from './game.mjs?v=0.20.0';
 export {TREES};
 const POINT_COST=[0,50,150,300,500,750,1000,1250,1500,1750,2000,2500,3000,3500,4000,5000,6000,7000,8000,9000,10000,12500,15000,17500,20000];
 export function ensureGarden(r){return r.garden??={version:1,capacity:1,points:0,exp:0,harvests:0,totalCoin:0,slotExp:Array(25).fill(0),plots:Array(25).fill(null),lastSeen:0};}

@@ -35,5 +35,124 @@
       "path": "DefineSprite_6547/frame_1/DoAction.as",
       "sha256": "510ff358c98797dc2b5a544da2fb363260c91d64b13b4eaec392ea6d18134f02"
     }
-  ]
+  ],
+  "features_and_dragon": {
+    "modules": [
+      "site/features.mjs",
+      "site/dragon.mjs",
+      "site/dragon-speeches.mjs",
+      "site/dragon-ui.mjs"
+    ],
+    "source_scripts": [
+      {
+        "path": "DefineSprite_10159/frame_29/PlaceObject2_1602_16/CLIPACTIONRECORD on(release).as",
+        "sha256": "014bacd42bbb1fdb7fe21e3a1cbb63a84c4861cc093189c6d482fdef7d1c0726"
+      },
+      {
+        "path": "DefineSprite_10159/frame_29/PlaceObject2_1602_353/CLIPACTIONRECORD on(release).as",
+        "sha256": "92d959dae805dad2580652ca736efa612ba79784dd705312b8c9984e4e3cda7d"
+      },
+      {
+        "path": "DefineSprite_10159/frame_29/PlaceObject2_1602_365/CLIPACTIONRECORD on(release).as",
+        "sha256": "297f10fcea8f39d87f6292ff7900f6d9f5213c3c2eb027276ec85bb5480c90dc"
+      },
+      {
+        "path": "DefineSprite_10159/frame_29/PlaceObject2_1602_377/CLIPACTIONRECORD on(release).as",
+        "sha256": "84b8ea342947f1ef9775582cc41663f9d6e8292bff0b2291c1680bf5ccd63363"
+      },
+      {
+        "path": "DefineSprite_10159/frame_29/PlaceObject2_1602_413/CLIPACTIONRECORD on(release).as",
+        "sha256": "42862d1ef30f9a99e1f483bcce257e9d4cbf6b9efbd8881ca92d1ce2d67c003f"
+      },
+      {
+        "path": "DefineSprite_10159/frame_29/PlaceObject2_9757_459/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "0759b4b3d53c5a0c3e59c80e517d6f1b715da273e3bcfaed347fd02b5c88350c"
+      },
+      {
+        "path": "DefineSprite_10159/frame_29/PlaceObject2_9757_464/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "ef79400e0c7089efe9fc5f53650c16c6e3228d86da737d842eca2ce65b673ff1"
+      },
+      {
+        "path": "DefineSprite_10159/frame_29/PlaceObject2_9757_469/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "9316458f6eef0b336526efc5192c1a3cc7eb13ad2eceb6ef98d584f46c3ca239"
+      },
+      {
+        "path": "DefineSprite_10159/frame_29/PlaceObject2_9757_474/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "84e5882b0c81d4bf4da7ce0d85ab2821dba0dd462b350f1ecdddc480457f1a39"
+      },
+      {
+        "path": "DefineSprite_10159/frame_29/PlaceObject2_9757_489/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "add909eb6e4d3f673eff98fd910333ebd4e8ee474d61671b0185407f163d00a6"
+      },
+      {
+        "path": "DefineSprite_10159/frame_30/PlaceObject2_1602_191/CLIPACTIONRECORD on(release).as",
+        "sha256": "77e5459d829af43717cc601f71694d1874115951f3549184ec8984a46e753f05"
+      },
+      {
+        "path": "DefineSprite_10159/frame_30/PlaceObject2_1602_214/CLIPACTIONRECORD on(release).as",
+        "sha256": "f1cf4f072d4263656482db78e66212c4e1e8f464cf37e592a745b34bd5892f2e"
+      },
+      {
+        "path": "DefineSprite_10159/frame_30/PlaceObject2_1602_238/CLIPACTIONRECORD on(release).as",
+        "sha256": "ab258c6145d571c1c9d09fba07fac509950a643d79e412c77e00c2610d37a3e7"
+      },
+      {
+        "path": "DefineSprite_10159/frame_30/PlaceObject2_9757_268/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "c8873b7905509637fd8ea0026e2425dd107f2388fb61a5e40041d3a43c857924"
+      },
+      {
+        "path": "DefineSprite_10159/frame_30/PlaceObject2_9757_273/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "0831c999d656a46339c7032035f3a53ad97dcf8462ad139cf8029957ab1245f5"
+      },
+      {
+        "path": "DefineSprite_10159/frame_30/PlaceObject2_9757_283/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "11ea7bbcba33352783d7b23647c72554013e97d2a2e4e8f66c498dbfef505874"
+      },
+      {
+        "path": "DefineSprite_7434/frame_1/PlaceObject2_5511_1/CLIPACTIONRECORD on(release).as",
+        "sha256": "5e462c08be95d364417ae036a2b5f51285cd148fdb071c9c8b8fcbdae1f4edee"
+      },
+      {
+        "path": "DefineSprite_7434/frame_1/PlaceObject2_5511_1/CLIPACTIONRECORD onClipEvent(enterFrame).as",
+        "sha256": "8348c3a2836442be90319f8482d1aa3a67555d8ca461713094278cb197c186c8"
+      },
+      {
+        "path": "DefineSprite_7434/frame_1/PlaceObject2_7433_5/CLIPACTIONRECORD on(dragOver,rollOver).as",
+        "sha256": "7153444bb441fc786bcf261444607198942b7819572f110b2dd376e70494ec88"
+      },
+      {
+        "path": "DefineSprite_7434/frame_1/PlaceObject2_7433_5/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "f0b1d9a0d7ca83e5d40e0cffc4c1237a2370ccc6392810321820a57746a541eb"
+      },
+      {
+        "path": "DefineSprite_7980/frame_19/PlaceObject2_1602_7/CLIPACTIONRECORD on(release).as",
+        "sha256": "25374a77b7b95778f5668381ecc82d8fe25dc1c8d63482e438d1b97e63d1a0fd"
+      },
+      {
+        "path": "DefineSprite_7980/frame_19/PlaceObject2_6685_4/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "8627ca964c6308ee3ddfc89ea62bea416380b083a33dcba068d7a074b0bbfcf7"
+      },
+      {
+        "path": "DefineSprite_7980/frame_19/PlaceObject2_7426_16/CLIPACTIONRECORD on(dragOver,rollOver).as",
+        "sha256": "2de0d4a8ff951aae383616362676cdeba554bdb1a9119f26e14b9b522d76a031"
+      },
+      {
+        "path": "DefineSprite_7980/frame_19/PlaceObject2_7426_16/CLIPACTIONRECORD on(release).as",
+        "sha256": "ade7fa8e8e691edd02221dd60daf12de71b40d1dd69aa542da580013b22f0542"
+      },
+      {
+        "path": "DefineSprite_7980/frame_19/PlaceObject2_7426_16/CLIPACTIONRECORD onClipEvent(load).as",
+        "sha256": "8ffa8ceea219ec64e22698a16d4517692d854ac160c1d058dbd4ff12b3da9399"
+      }
+    ],
+    "adaptations": [
+      "HTML/SVG screen controls; default Dragon route",
+      "Legacy unlock migration based on used-content records",
+      "Browser local-date feeding reset; clock rollback does not reset daily count",
+      "Dragon item rewards kept in a ledger until consuming systems are ported",
+      "First-feature guide rather than full Newbie Tasks",
+      "Sword of Ascendant remains unported",
+      "versioned module URLs to avoid stale cached app modules"
+    ]
+  }
 }

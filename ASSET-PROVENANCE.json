@@ -653,6 +653,20 @@
       "source_frame": 3,
       "role": "mmrx-note",
       "sha256": "d5527b144ede8f9d320d164d4faa8a36079c3e55c66c14c6754e732b7f6012e6"
+    },
+    {
+      "file": "assets/dragon-original.png",
+      "source_shape": 7421,
+      "role": "Original Dragon of Wisdom upper scene",
+      "extraction": "Unmodified embedded PNG from FFDec shape7421 SVG",
+      "sha256": "e5529d0194944a12bc93eeaf12de07b4e909c381c24b38273734f3607739fed7"
+    },
+    {
+      "file": "assets/dragon-floor.png",
+      "source_shape": 7421,
+      "role": "Original Dragon of Wisdom floor",
+      "extraction": "Unmodified embedded PNG from FFDec shape7421 SVG",
+      "sha256": "86f825d0bac87275b167ee71a3bdcf17076782ccd0404645d304cb6dae9c8775"
     }
   ],
   "note": "PNG files copied byte-for-byte from sprite export. SVG viewBox selects the source background stage bounds without repainting. Hero reward bounce is a new CSS effect, not a recovered animation."

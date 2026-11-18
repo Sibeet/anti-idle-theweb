@@ -1,5 +1,5 @@
-import {awardExperience} from './game.mjs';
-import {ensureArcade} from './arcade.mjs';
+import {awardExperience} from './game.mjs?v=0.20.0';
+import {ensureArcade} from './arcade.mjs?v=0.20.0';
 const OPS=['+','−','×','÷'];
 const calc=(a,b,i)=>[a+b,a-b,a*b,b===0?NaN:a/b][i];
 export function makeQuestion(d,rng=Math.random){

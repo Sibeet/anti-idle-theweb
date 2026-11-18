@@ -1,5 +1,5 @@
-import {ensureArcade} from './arcade.mjs';
-import {awardExperience} from './game.mjs';
+import {ensureArcade} from './arcade.mjs?v=0.20.0';
+import {awardExperience} from './game.mjs?v=0.20.0';
 export const PONG={width:480,height:250,top:20,bottom:230,paddleWidth:20,paddleHeight:70,ballSize:20};
 const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
 function resetBall(g,rng){g.ball={x:240,y:125,vx:5,vy:(1.2+rng()-rng())*(rng()<.5?-1:1),count:0,alpha:1};}

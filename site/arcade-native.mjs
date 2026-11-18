@@ -1,6 +1,6 @@
 // Static adapters for decompiled AS2-compatible game logic. No eval or Function compilation at runtime.
-import {ensureArcade} from './arcade.mjs';
-import {awardExperience} from './game.mjs';
+import {ensureArcade} from './arcade.mjs?v=0.20.0';
+import {awardExperience} from './game.mjs?v=0.20.0';
 function clip(){return new Proxy({_x:0,_y:-999,_alpha:0,_currentframe:1,_xscale:100,_yscale:100,_width:0,_height:0,_rotation:0,alp:0,text:'',gotoAndStop(n){this._currentframe=n;}},{get(o,k){if(k===Symbol.toPrimitive)return ()=>0;if(k in o)return o[k];return o[k]=clip();}});}
 function context(r,rng){const session={running:true,settled:false,acc:0};const root={fps:40,save:{rankedMode:false,arcadeDifficulty:Array(10).fill(2),unrankedPower:Array(50).fill(0),arcadeConfig6:false,arcadeMmrNoteSkin:0},saveGlobal:{},withComma:n=>String(n),convertSec:n=>String(n),dispNews(){},gainWhiteCoin(n){ensureArcade(r).whiteCoins+=n;},arcadeDragonCount:0};Object.defineProperty(root,'progPercent',{get:()=>r.progPercent,set:n=>r.progPercent=Math.min(100,n)});const parent=clip();parent.gotoAndStop=()=>{session.running=false;};const math=Object.create(globalThis.Math);math.random=rng;return {session,root,parent,math};}
 function drive(session,dt,frame){if(!session.running||!Number.isFinite(dt)||dt<=0)return;session.acc+=Math.min(dt,.25);while(session.acc>=.025&&session.running){session.acc-=.025;frame();}}

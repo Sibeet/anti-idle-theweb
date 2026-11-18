@@ -22,8 +22,23 @@ globalThis.document={getElementById:id=>ids.get(id)??null,createElement:tag=>new
 const data=new Map();globalThis.localStorage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
 globalThis.addEventListener=(event,fn)=>listeners[event]=fn;globalThis.requestAnimationFrame=fn=>raf=fn;globalThis.setInterval=()=>1;globalThis.setTimeout=()=>1;globalThis.clearTimeout=()=>{};
 const fixture=newGame();ensureArena(fixture);fixture.arena.xp=60000;settleGrowth(fixture);fixture.progPercent=100;fixture.save.level=50;fixture.save.bestLevel=50;fixture.arena.hp=1000;
+for(const id of ['arena','garden','arcade','idle','boost','arcadePack'])fixture.features[id]=true;fixture.save.featureBoostGen=true;
 localStorage.setItem('anti-idle-web-prototype-v1',JSON.stringify(fixture));
+if(process.env.FEATURE_GATE_TEST==='1'){
+ const fresh=newGame();localStorage.setItem('anti-idle-web-prototype-v1',JSON.stringify(fresh));globalThis.location={hash:'#arcade'};
+}
 await import('../site/app.mjs');
+if(process.env.FEATURE_GATE_TEST==='1'){
+ assert.equal(ids.get('shop').classes.has('hidden'),false,'locked URL routes to Feature Shop');
+ assert.equal(ids.get('arcade').classes.has('hidden'),true);assert.equal(ids.get('mode').disabled,true);assert.equal(ids.get('selectMind').disabled,true);assert.equal(ids.get('selectMmrx').disabled,true);assert.equal(ids.get('selectBalance').disabled,true);assert.equal(ids.get('dragonFeed').disabled,true);
+ nodes.find(n=>n.dataset.tab==='dragon').click();assert.equal(ids.get('dragon').classes.has('hidden'),false);
+ const fresh=newGame();fresh.save.level=fresh.save.bestLevel=12;fresh.save.coin=10000;
+ const load=async r=>ids.get('importFile').onchange({target:{files:[{size:20000,text:async()=>JSON.stringify(r)}],value:''}});
+ await load(fresh);nodes.find(n=>n.dataset.tab==='garden').click();assert.equal(ids.get('shop').classes.has('hidden'),false);ids.get('unlockgarden').click();
+ nodes.find(n=>n.dataset.tab==='garden').click();assert.equal(ids.get('garden').classes.has('hidden'),false);ids.get('saveButton').click();let s=JSON.parse(localStorage.getItem('anti-idle-web-prototype-v1'));assert.equal(s.save.coin,0);assert.equal(s.features.garden,true);
+ const fed=newGame();fed.save.level=fed.save.bestLevel=50;fed.save.coin=100000;await load(fed);nodes.find(n=>n.dataset.tab==='dragon').click();ids.get('dragonFeed').click();ids.get('saveButton').click();s=JSON.parse(localStorage.getItem('anti-idle-web-prototype-v1'));assert.equal(s.dragon.total,1);assert.equal(s.save.blueCoin,1);assert.ok(ids.get('dragonSpeech').textContent.includes('CTRL'));assert.equal(ids.get('dragon').classes.has('hidden'),false);
+ console.log('PASS: actual app locked hash, Dragon navigation, Idle lock, imported level threshold, Feature Shop purchase, unlocked Garden and Dragon feeding/save wiring.');process.exit(0);
+}
 assert.ok(ids.get('combatSpeed').textContent.includes('0.35'));
 const arenaTab=nodes.find(n=>n.dataset.tab==='arena');arenaTab.click();assert.equal(ids.get('arena').classes.has('hidden'),false);
 ids.get('barButton').click();ids.get('saveButton').click();let saved=JSON.parse(localStorage.getItem('anti-idle-web-prototype-v1'));assert.equal(saved.save.rewardClaim,1);assert.equal(ids.get('arena').classes.has('hidden'),false);assert.ok(!ids.has('claim'));

@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {newGame,restore,tick,buyBoost} from '../site/game.mjs';
+import {FEATURES,buyFeature,owns} from '../site/features.mjs';
+import {ensureDragon,feedCost,feedDragon,feedingRequirement,claimDragonLevelReward} from '../site/dragon.mjs';
+for(const f of FEATURES.filter(f=>!f.requires)){const r=newGame();r.save.coin=f.cost;r.save.level=f.level-1;assert.equal(buyFeature(r,f.id),false);r.save.level=r.save.bestLevel=f.level;r.save.coin=f.cost-1;assert.equal(buyFeature(r,f.id),false);r.save.coin++;assert.equal(buyFeature(r,f.id),true);assert.equal(r.save.coin,0);assert.equal(owns(r,f.id),true);assert.equal(buyFeature(r,f.id),false);assert.equal(restore(JSON.stringify(r)).features[f.id],true);}
+const pack=newGame();pack.save.blueCoin=750;assert.equal(buyFeature(pack,'arcadePack'),false);pack.features.arcade=true;assert.equal(buyFeature(pack,'arcadePack'),true);assert.equal(pack.save.blueCoin,0);assert.equal(buyFeature(pack,'arcadePack'),false);
+let r=newGame();r.save.idleMode=true;r.progPercent=100;assert.equal(tick(r),null);assert.equal(r.save.idleMode,false);r.save.greenCoin=100;assert.equal(buyBoost(r),false);
+const monday=new Date(2026,10,16,12),friday=new Date(2026,10,20,12);
+r=newGame();r.save.coin=1e9;r.save.level=r.save.bestLevel=49;assert.equal(feedDragon(r,()=>0,monday),null);r.save.level=r.save.bestLevel=50;assert.equal(feedCost(r,monday),3500);
+let result=feedDragon(r,()=>0,monday);assert.equal(result.cost,3500);assert.equal(r.save.blueCoin,1);assert.equal(r.dragon.discovered[2],1);assert.equal(r.dragon.knowledge,1);assert.equal(r.dragon.meter,1);assert.equal(feedCost(r,monday),7000);
+for(let i=0;i<4;i++)feedDragon(r,()=>0,monday);assert.equal(r.dragon.boost,1);assert.equal(r.dragon.meter,0);assert.equal(r.boostMax,501);
+const total=r.dragon.total;feedDragon(r,()=>0,friday);assert.equal(r.dragon.today,1);assert.equal(r.dragon.total,total+1);assert.equal(r.dragon.meter,2);ensureDragon(r,monday);assert.equal(r.dragon.today,1,'clock rollback must not reset the day');
+assert.deepEqual([0,49,50,99,100,149,150,199,200,249,250,299,300].map(feedingRequirement),[5,5,10,10,25,25,50,50,100,100,250,250,500]);
+let loaded=restore(JSON.stringify(r));assert.ok(loaded);assert.equal(loaded.dragon.boost,1);assert.equal(loaded.boostMax,501);r.save.boost=501;assert.ok(restore(JSON.stringify(r)));r.save.boost=502;assert.equal(restore(JSON.stringify(r)),null);r.save.boost=100;
+r.save.level=r.save.bestLevel=100;assert.ok(claimDragonLevelReward(r));assert.equal(r.dragon.inventory['Idlebot Card'],1);assert.equal(claimDragonLevelReward(r),null);r.save.level=r.save.bestLevel=500;assert.ok(claimDragonLevelReward(r));assert.ok(claimDragonLevelReward(r));assert.equal(r.dragon.inventory['Legendary Boxes'],2);assert.equal(r.dragon.inventory['Quest Tokens'],5000);assert.equal(claimDragonLevelReward(r),null);
+const corrupted=structuredClone(r);corrupted.dragon.today=-1;assert.equal(restore(JSON.stringify(corrupted)),null);corrupted.dragon.today=0;corrupted.features.arcade='yes';assert.equal(restore(JSON.stringify(corrupted)),null);
+const legacy=newGame();delete legacy.features;legacy.save.idleMode=true;legacy.save.boostPurchased=25;legacy.save.boost=125;legacy.arcade={version:1,best:0,total:0,plays:1,medals:0,whiteCoins:0};loaded=restore(JSON.stringify(legacy));assert.equal(loaded.features.arcade,true);assert.equal(loaded.features.idle,true);assert.equal(loaded.features.boost,true);assert.equal(loaded.features.garden,false);assert.equal(loaded.features.arena,false);
+console.log('PASS: feature level/coin boundaries, once-only purchase, idle/boost gates, legacy migration, Dragon feeding cost/daily reset/Friday/boost/book, level rewards and save validation.');
