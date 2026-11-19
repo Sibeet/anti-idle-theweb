@@ -30,7 +30,7 @@ Legacy saves retain used content based on actual Arena/Garden/Arcade records. Em
 
 ## Remaining work
 
-The full original Newbie Tasks sequence, Button Machine, careers, pets, ascension and other late features are not implemented. The Dragon's first-feature goal is a small guide, not the complete original tutorial. The Sword of Ascendant and associated boss flow are not usable. Dragon cards, boxes and materials are recorded in the rewards ledger; their consumption systems are not yet implemented. Dragon 1.5x EXP/Coin time rewards are recorded, but their timers/multipliers are not connected yet. Original account-name speech uses Player. MMRX has visual timing without soundtrack. Arcade difficulty/rating/unranked systems and shops remain unported. Some combat timing and Progress Bar upgrade prices remain prototype values.
+The full original Newbie Tasks sequence, careers, pets, ascension and other late features are not implemented. The Dragon's first-feature goal is a small guide, not the complete original tutorial. The Sword of Ascendant and associated boss flow are not usable. Dragon cards, boxes and materials are recorded in the rewards ledger; their consumption systems are not yet implemented. Dragon 1.5x EXP/Coin time rewards are recorded, but their timers/multipliers are not connected yet. Original account-name speech uses Player. MMRX has visual timing without soundtrack. Arcade difficulty/rating/unranked systems and shops remain unported. Some combat timing and Progress Bar upgrade prices remain prototype values.
 
 ## Verification and sources
 
@@ -44,7 +44,7 @@ The progress fill draws on each animation frame, interpolating the original 25ms
 
 A 120-frame DOM-adapter benchmark on the idle Dragon screen reduced setAttribute calls from38,820 to160, with120 progress-fill draws and zero hidden MMRX/MindSweeper tile attribute writes. This is a synthetic DOM-work regression check, not a measured browser FPS guarantee. Input tests cover mouse entry/readiness, continued hover, leaving/blur, touch/click fallback, duplicate payouts and preserving the current feature.
 
-## Navigation update — 0.21.0
+## Navigation update — 0.20.2
 
 The feature tabs above the game and duplicate bottom content links have been replaced by the right-side World menu beside the Progress Bar. Dragon, Progress Bar, Garden, Battle Arena, Arcade, Shop/Upgrades and Stats share one menu with the current view highlighted. Level/purchase requirements and hover collection remain active. On screens700px wide or narrower, World starts collapsed and closes after choosing a feature. Desktop and390px browser checks verified navigation and mobile collapse.
 
