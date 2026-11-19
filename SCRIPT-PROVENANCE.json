@@ -154,5 +154,16 @@
       "Sword of Ascendant remains unported",
       "versioned module URLs to avoid stale cached app modules"
     ]
+  },
+  "button_machine": {
+    "sources": [
+      "DefineSprite_6049/frame_1/DoAction.as",
+      "DefineSprite_6024/frame_1/PlaceObject2_6021_1/load",
+      "DefineSprite_6048/frame_2",
+      "DefineSprite_6048/frame_3",
+      "frame_13/DoAction_2.as"
+    ],
+    "runtime": "button-machine.mjs",
+    "scope": "Normal mode; 40 Hz target motion; online-only Grandpas; no elite/career/pet/event modifiers; crate opening and boost freeze pending"
   }
 }

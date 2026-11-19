@@ -1,5 +1,5 @@
-import {growthStats} from './growth.mjs?v=0.20.0';
-import {GEAR} from './gear-data.mjs?v=0.20.0';
+import {growthStats} from './growth.mjs?v=0.21.0';
+import {GEAR} from './gear-data.mjs?v=0.21.0';
 export const WEAPONS=GEAR.filter(g=>g.slot==='weapon');
 export const ARMOR=GEAR.filter(g=>g.slot!=='weapon');
 export const ARMOR_SLOTS=['hat','shirt','gloves','pants','shoes'];

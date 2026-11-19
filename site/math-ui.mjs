@@ -1,5 +1,5 @@
-import {ensureArcade} from './arcade.mjs?v=0.20.0';
-import {startMath,stepMath,answerMath,finishMath} from './math-master.mjs?v=0.20.0';
+import {ensureArcade} from './arcade.mjs?v=0.21.0';
+import {startMath,stepMath,answerMath,finishMath} from './math-master.mjs?v=0.21.0';
 export function createMathUI({getRoot,save,log,refresh,isActive}){
  const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US');let owner=getRoot(),game=null,last=performance.now(),result=null;
  function settle(){if(!game||game.settled)return;result=finishMath(getRoot(),game);save();log('Math Master: '+fmt(result.score)+' | +'+fmt(result.coin)+' Y / +'+fmt(result.exp)+' EXP');}

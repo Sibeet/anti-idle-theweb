@@ -1,5 +1,5 @@
-import {ensureArcade} from './arcade.mjs?v=0.20.0';
-import {awardExperience} from './game.mjs?v=0.20.0';
+import {ensureArcade} from './arcade.mjs?v=0.21.0';
+import {awardExperience} from './game.mjs?v=0.21.0';
 const rand=(rng,n)=>Math.floor(rng()*n);
 function newBoard(g,rng){g.key=rand(rng,20)+20*rand(rng,10);g.found=false;g.revealed=0;g.red=false;g.focus=-1;g.cooldown=0;g.cells=Array.from({length:200},(_,index)=>{let kind=3;const m=g.multiplier;
  if(rng()<.02+m*.0002&&m>=20)kind=9;else if(rng()<.1+.4/m)kind=4;else if(rng()<.04+.16/m)kind=5;else if(rng()<.065+Math.min(m,25)*.00035)kind=6;else if(rng()<.0475+Math.min(m,25)*.00025)kind=7;

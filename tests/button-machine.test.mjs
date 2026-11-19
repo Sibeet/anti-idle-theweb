@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {newGame,restore} from '../site/game.mjs';
+import {ensureButtonMachine,createButtonSession,pressButton,stepButtonSession,buttonRepairCost,repairButton,buyButtonUpgrade,grandpaSecond,useButtonPotion,validButtonMachine} from '../site/button-machine.mjs';
+const r=newGame();r.features.button=true;r.save.level=r.save.bestLevel=40;r.save.coin=1e7;const d=ensureButtonMachine(r),s=createButtonSession(r);
+assert.equal(pressButton(r,s,0,0),null);stepButtonSession(s);stepButtonSession(s);
+const before=r.save.coin;let hit=pressButton(r,s,0,0,{rng:()=>0});assert.equal(hit.rank,7);assert.equal(d.purple,1);assert.equal(r.save.greenCoin,1000);assert.equal(r.save.blueCoin,2);assert.equal(s.life,5000);assert.equal(r.save.boost,101);assert.equal(r.save.coin,before+hit.coin);
+assert.equal(pressButton(r,s,0,0),null,'cooldown blocks duplicate awards');
+for(let i=0;i<15;i++){s.cooldown=0;hit=pressButton(r,s,s.x,0,{rng:()=>0});}assert.equal(hit.exp,1);assert.equal(hit.coin,1);assert.equal(d.purple,15);assert.equal(s.combo,0);
+s.cooldown=0;hit=pressButton(r,s,s.x+10,0,{rng:()=>0});assert.equal(hit.rank,3);assert.equal(s.chain,0);assert.equal(s.life,4980);const presses=d.presses;assert.equal(pressButton(r,s,240,74).rank,1);assert.equal(d.presses,presses);
+s.cooldown=0;s.life=1;pressButton(r,s,s.x+45,0,{rng:()=>.99});assert.equal(d.broken,true);assert.equal(d.breaks,1);assert.equal(buttonRepairCost(r),22900);assert.equal(pressButton(r,s,s.x,0),null);assert.equal(repairButton(r,s),true);assert.equal(s.life,5000);assert.equal(d.broken,false);
+s.combo=20;s.chain=2;assert.equal(repairButton(r,s),true);assert.equal(s.combo,20);assert.equal(s.chain,2);for(let i=0;i<75;i++)stepButtonSession(s);assert.equal(s.combo,0);
+d.purple=1000;assert.equal(buyButtonUpgrade(r,'multiplier'),true);assert.equal(d.multiplierBonus,2);assert.equal(buyButtonUpgrade(r,'blessing'),true);assert.equal(d.blessing,2000);assert.equal(buyButtonUpgrade(r,'grandpa'),true);assert.equal(d.grandpas,1);const today=d.today,life=s.life;hit=grandpaSecond(r,true,()=>0);assert.equal(hit.clicks,1);assert.equal(hit.purple,1);assert.equal(d.today,today);assert.equal(s.life,life);assert.equal(d.grandpaPress,1);assert.equal(grandpaSecond(r,false,()=>.001),null,'background discipline reduces click probability');
+d.potions=1;assert.equal(useButtonPotion(r),true);assert.equal(r.save.boost,750);assert.equal(useButtonPotion(r),false);assert.ok(restore(JSON.stringify(r)));assert.ok(validButtonMachine(d));d.speed=12;assert.equal(restore(JSON.stringify(r)),null);d.speed=1;
+const old=structuredClone(r);delete old.features.button;delete old.buttonMachine;assert.equal(restore(JSON.stringify({...old,save:{...old.save,boost:100}})).features.button,false);
+console.log('PASS: Button Machine cooldown, perfect-chain guard, aim/life/miss, repair, combo expiry, shop, background Grandpas, boost potion and save compatibility.');

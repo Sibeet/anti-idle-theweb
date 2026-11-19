@@ -28,6 +28,17 @@ if(process.env.FEATURE_GATE_TEST==='1'){
  const fresh=newGame();localStorage.setItem('anti-idle-web-prototype-v1',JSON.stringify(fresh));globalThis.location={hash:'#arcade'};
 }
 await import('../site/app.mjs');
+if(process.env.BUTTON_MACHINE_TEST==='1'){
+ const r=newGame();r.save.level=r.save.bestLevel=40;r.features.button=true;r.save.coin=300000;
+ await ids.get('importFile').onchange({target:{files:[{size:20000,text:async()=>JSON.stringify(r)}],value:''}});
+ nodes.find(n=>n.dataset.tab==='button').click();assert.equal(ids.get('button').classes.has('hidden'),false);
+ let now=performance.now();globalThis.performance={now:()=>now};for(let i=0;i<4;i++){now+=25;raf(now);}
+ const field=ids.get('machineField');field.getBoundingClientRect=()=>({left:0,top:0,width:500,height:150});field.onclick({detail:1,clientX:250,clientY:75});
+ assert.ok(ids.get('machineResult').textContent.startsWith('PERFECT!'));assert.equal(ids.get('machinePurple').textContent,'1');
+ ids.get('barButton').click();assert.equal(ids.get('button').classes.has('hidden'),false);
+ nodes.find(n=>n.dataset.tab==='dragon').click();nodes.find(n=>n.dataset.tab==='button').click();assert.equal(ids.get('machineTotal').textContent,'1');
+ console.log('PASS: actual Button Machine tab, pointer coordinates, Perfect feedback, saved rewards, shared progress bar and reentry.');process.exit(0);
+}
 if(process.env.RENDER_BENCHMARK==='1'){domWrites.attributes=0;domWrites.progress=0;domWrites.byId={};let now=performance.now();for(let i=0;i<120;i++)raf(now+i*1000/60);assert.equal(domWrites.byId.mmrxNote0??0,0,'hidden MMRX must not repaint');assert.equal(domWrites.byId.mindCell0??0,0,'hidden MindSweeper must not repaint');assert.ok(domWrites.progress>=120,'progress fill must draw on every animation frame');assert.ok(domWrites.attributes<1000,'idle Dragon should not repaint all game boards');console.log(JSON.stringify({frames:120,progressDraws:domWrites.progress,attributeWrites:domWrites.attributes,hiddenMmrX:domWrites.byId.mmrxNote0??0,hiddenMind:domWrites.byId.mindCell0??0}));process.exit(0);}
 if(process.env.BAR_INPUT_TEST==='1'){
  const r=newGame();r.features.arcade=true;r.progPercent=99.99;

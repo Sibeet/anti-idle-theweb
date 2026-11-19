@@ -1,12 +1,13 @@
-import {newFeatures,validFeatures,migrateFeatures,owns} from './features.mjs?v=0.20.0';
-import {validDragon,ensureDragon} from './dragon.mjs?v=0.20.0';
-import {validArcade} from './arcade.mjs?v=0.20.0';
-import {validGarden} from './garden.mjs?v=0.20.0';
-import {region,ENEMY_DATA} from './regions.mjs?v=0.20.0';
-import {validSkills} from './skills.mjs?v=0.20.0';
-import {baseStats,growthStats,settleGrowth} from './growth.mjs?v=0.20.0';
-import {arenaRank,validEquipment} from './equipment.mjs?v=0.20.0';
-import {calcReqExp,progressUp,gainBoost} from './core.mjs?v=0.20.0';
+import {validButtonMachine} from './button-machine.mjs?v=0.21.0';
+import {newFeatures,validFeatures,migrateFeatures,owns} from './features.mjs?v=0.21.0';
+import {validDragon,ensureDragon} from './dragon.mjs?v=0.21.0';
+import {validArcade} from './arcade.mjs?v=0.21.0';
+import {validGarden} from './garden.mjs?v=0.21.0';
+import {region,ENEMY_DATA} from './regions.mjs?v=0.21.0';
+import {validSkills} from './skills.mjs?v=0.21.0';
+import {baseStats,growthStats,settleGrowth} from './growth.mjs?v=0.21.0';
+import {arenaRank,validEquipment} from './equipment.mjs?v=0.21.0';
+import {calcReqExp,progressUp,gainBoost} from './core.mjs?v=0.21.0';
 export function newGame(){return {version:1,features:newFeatures(),fps:40,saveid:0,progPercent:0,boostMax:500,idlerAppreciate:false,curCareerLevel:[0,0],save:{level:1,bestLevel:1,gDifficulty:1,banned:0,gOldAscension:false,totalExp:0,currentExp:0,idleMode:false,progStore:100,progSpeedManual:100,progSpeedAuto:100,careerLevel:[0,0],totalStupidity:0,permaBanPenalty:Array(32).fill(0),boost:100,boostPurchased:0,featureBoostGen:false,rewardClaim:0,coin:0,greenCoin:0,blueCoin:0},upgrades:0,log:[]};}
 export function tick(r){ensureDragon(r);if(!owns(r,'idle'))r.save.idleMode=false;progressUp(r);r.progPercent=Math.min(r.progPercent,100);if(r.save.idleMode&&r.progPercent>=100)return claim(r);return null;}
 export function claim(r,rng=Math.random){if(r.progPercent<100)return null;const s=r.save;calcReqExp(r);r.progPercent-=100;s.rewardClaim++;let exp=Math.floor(1.4*s.boost*Math.pow(s.level,.6)),coin=Math.floor(.35*s.boost*Math.pow(s.level,.6)*(.8+rng()*.4)),green=100,blue=0;
@@ -24,12 +25,12 @@ export function restore(text){try{
  const finite=(v,min=0,max=Number.MAX_VALUE)=>typeof v==='number'&&Number.isFinite(v)&&v>=min&&v<=max;
  const integer=(v,min=0,max=Number.MAX_SAFE_INTEGER)=>Number.isSafeInteger(v)&&v>=min&&v<=max;
  for(const key of ['level','bestLevel','gDifficulty','banned','totalExp','currentExp','boost','boostPurchased','rewardClaim','coin','greenCoin','blueCoin','progSpeedManual','progSpeedAuto']){const v=parsed.save?.[key];if(!finite(v))return null;r.save[key]=v;}
- if(!integer(r.save.level,1,8998)||!integer(r.save.bestLevel,r.save.level,8998)||r.save.boost<100||r.save.boost>800||r.save.gDifficulty!==1)return null;
+ if(!integer(r.save.level,1,8998)||!integer(r.save.bestLevel,r.save.level,8998)||r.save.boost<100||r.save.boost>1200||r.save.gDifficulty!==1)return null;
  r.save.idleMode=parsed.save.idleMode===true;r.upgrades=Math.min(20,Math.max(0,Math.floor(parsed.upgrades||0)));r.progPercent=Math.min(100,Math.max(0,Number(parsed.progPercent)||0));
  if(parsed.features!==undefined&&!validFeatures(parsed.features))return null;
  r.features=parsed.features?{...newFeatures(),...parsed.features,arcadePack:parsed.features.arcadePack??migrateFeatures(r,parsed).arcadePack}:migrateFeatures(r,parsed);r.save.featureBoostGen=owns(r,'boost');if(!owns(r,'idle'))r.save.idleMode=false;
  if(parsed.dragon!==undefined){if(!validDragon(parsed.dragon,r.save.bestLevel))return null;r.dragon=structuredClone(parsed.dragon);}
- ensureDragon(r);if(r.save.boost>r.boostMax)return null;
+ ensureDragon(r);if(r.save.boost>r.boostMax*(owns(r,'button')?1.5:1))return null;
  if(parsed.arena!==undefined){
   const a=parsed.arena;if(!a||typeof a!=='object'||Array.isArray(a))return null;r.arena={};
   for(const key of ['hp','kills','pixels','xp','cooldown','enemyTimer','spawnTimer','enemyIndex','enemyHp']){if(!finite(a[key]))return null;r.arena[key]=a[key];}
@@ -55,6 +56,7 @@ export function restore(text){try{
  if(r.arena){const a=parsed.arena;if(a.hp>(a.growthVersion===1?growthStats(r).maxHp:300))return null;settleGrowth(r);const mp=a.mp??growthStats(r).maxMana;if(!finite(mp,0,growthStats(r).maxMana))return null;r.arena.mp=mp;}
  if(parsed.garden!==undefined){if(!validGarden(parsed.garden))return null;r.garden=structuredClone(parsed.garden);}
  if(parsed.arcade!==undefined){if(!validArcade(parsed.arcade))return null;r.arcade=structuredClone(parsed.arcade);}
+ if(parsed.buttonMachine!==undefined){if(!validButtonMachine(parsed.buttonMachine))return null;r.buttonMachine=structuredClone(parsed.buttonMachine);}
  return r;
  }catch{return null;}}
 

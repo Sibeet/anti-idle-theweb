@@ -667,6 +667,69 @@
       "role": "Original Dragon of Wisdom floor",
       "extraction": "Unmodified embedded PNG from FFDec shape7421 SVG",
       "sha256": "86f825d0bac87275b167ee71a3bdcf17076782ccd0404645d304cb6dae9c8775"
+    },
+    {
+      "file": "assets/button-normal.png",
+      "source_sprite": 6021,
+      "source_frame": 1,
+      "role": "Button Machine original artwork",
+      "sha256": "9ab97563c8e4238fe124893138f5998c18b7486303f71aaf3b49ba3da288276a"
+    },
+    {
+      "file": "assets/button-blessed.png",
+      "source_sprite": 6021,
+      "source_frame": 2,
+      "role": "Button Machine original artwork",
+      "sha256": "d55effc783f91b11c6ad604617801c189488d25b6aadeb99f7ea8beb0691409c"
+    },
+    {
+      "file": "assets/button-grade-1.png",
+      "source_sprite": 149,
+      "source_frame": 1,
+      "role": "Button Machine original artwork",
+      "sha256": "f296ec42fefa0615b798fb8d9e6897b8de12133f747c21aef7fe55fcc73556ea"
+    },
+    {
+      "file": "assets/button-grade-2.png",
+      "source_sprite": 149,
+      "source_frame": 2,
+      "role": "Button Machine original artwork",
+      "sha256": "f6ca6e39cbf47e8fb9e56560ad4add4e67081543c7ff931b846607f86b01d0aa"
+    },
+    {
+      "file": "assets/button-grade-3.png",
+      "source_sprite": 149,
+      "source_frame": 3,
+      "role": "Button Machine original artwork",
+      "sha256": "79a65d8bdb5757ca879abb25274551c33d50f65193a836e540e894aec2f66781"
+    },
+    {
+      "file": "assets/button-grade-4.png",
+      "source_sprite": 149,
+      "source_frame": 4,
+      "role": "Button Machine original artwork",
+      "sha256": "de727169009364f1ed156a2d446d327d24cbcd11e9b0221f2a485db1cbcdea30"
+    },
+    {
+      "file": "assets/button-grade-5.png",
+      "source_sprite": 149,
+      "source_frame": 5,
+      "role": "Button Machine original artwork",
+      "sha256": "c2d03274177524269706b1067c9bb7869ab9cb9b4076239936d8def97a0bf0b9"
+    },
+    {
+      "file": "assets/button-grade-6.png",
+      "source_sprite": 149,
+      "source_frame": 6,
+      "role": "Button Machine original artwork",
+      "sha256": "bf92666595ae3ecccb7b13b1f426b134abbae9fb8239aa449fce139f3d60fd6c"
+    },
+    {
+      "file": "assets/button-grade-7.png",
+      "source_sprite": 149,
+      "source_frame": 7,
+      "role": "Button Machine original artwork",
+      "sha256": "014aec1d4979591aac3f1e061204fa0f4255809ba2780505fcf2f617f27a7fb7"
     }
   ],
   "note": "PNG files copied byte-for-byte from sprite export. SVG viewBox selects the source background stage bounds without repainting. Hero reward bounce is a new CSS effect, not a recovered animation."

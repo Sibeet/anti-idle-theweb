@@ -1,10 +1,10 @@
 {
   "name": "anti-idle-web-port",
-  "version": "0.20.2",
+  "version": "0.21.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/core.test.mjs && node tests/game.test.mjs && node tests/combat.test.mjs && node tests/equipment.test.mjs && node tests/combat-stats.test.mjs && node tests/growth.test.mjs && node tests/skills.test.mjs && node tests/regions.test.mjs && node tests/enemy-effects.test.mjs && node tests/combat-completion.test.mjs && node tests/combat-flow.test.mjs && node tests/garden.test.mjs && node tests/arcade.test.mjs && node tests/math-master.test.mjs && node tests/pong.test.mjs && node tests/avoidance.test.mjs && node tests/mind.test.mjs && node tests/mind-powers.test.mjs && node tests/native-arcade.test.mjs && node tests/content.test.mjs && node tests/ui-flow.test.mjs && node tests/assets.test.mjs && node tests/features-dragon.test.mjs && node scripts/test-feature-gates.mjs && node scripts/test-ui-runtime.mjs",
+    "test": "node tests/core.test.mjs && node tests/game.test.mjs && node tests/combat.test.mjs && node tests/equipment.test.mjs && node tests/combat-stats.test.mjs && node tests/growth.test.mjs && node tests/skills.test.mjs && node tests/regions.test.mjs && node tests/enemy-effects.test.mjs && node tests/combat-completion.test.mjs && node tests/combat-flow.test.mjs && node tests/garden.test.mjs && node tests/arcade.test.mjs && node tests/math-master.test.mjs && node tests/pong.test.mjs && node tests/avoidance.test.mjs && node tests/mind.test.mjs && node tests/mind-powers.test.mjs && node tests/native-arcade.test.mjs && node tests/content.test.mjs && node tests/ui-flow.test.mjs && node tests/assets.test.mjs && node tests/features-dragon.test.mjs && node scripts/test-feature-gates.mjs && node scripts/test-ui-runtime.mjs && node tests/button-machine.test.mjs",
     "build": "node scripts/build.mjs"
   },
   "engines": {
