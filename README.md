@@ -16,7 +16,7 @@ python -m http.server 8080 --directory dist
 
 Open http://localhost:8080/. Relative paths support the GitHub Pages repository subdirectory. The main-branch workflow tests, builds and deploys to GitHub Pages.
 
-## Current scope — 0.20.1
+## Current scope — 0.20.2
 
 - Dragon of Wisdom is the default starting screen, with original scene artwork, a next-feature goal, feeding from best level 50, source feeding costs, blue coin payout, daily reset, Friday meter bonus, discovered speeches, Dragon Boost, and level rewards.
 - Feature Shop uses the current v1853 costs and gates: Idle Mode Lv.2 / 500 Y; Boost Generator Lv.4 / 2,000 Y; Garden Lv.12 / 10,000 Y; Battle Arena Lv.25 / 50,000 Y; Arcade Lv.80 / 750,000 Y. These features require purchase, not just reaching the level.
@@ -43,3 +43,7 @@ ASSET-PROVENANCE.json records original art hashes; SCRIPT-PROVENANCE.json record
 The progress fill draws on each animation frame, interpolating the original 25ms simulation steps; game calculation speed is unchanged. Hidden Arcade boards no longer repaint. Running offscreen games continue their timers/simulation and settle once. The detailed UI is refreshed only for the current feature, and the offscreen Garden expiry/readiness check runs once per second.
 
 A 120-frame DOM-adapter benchmark on the idle Dragon screen reduced setAttribute calls from38,820 to160, with120 progress-fill draws and zero hidden MMRX/MindSweeper tile attribute writes. This is a synthetic DOM-work regression check, not a measured browser FPS guarantee. Input tests cover mouse entry/readiness, continued hover, leaving/blur, touch/click fallback, duplicate payouts and preserving the current feature.
+
+## Navigation update — 0.20.2
+
+The feature tabs above the game and duplicate bottom content links have been replaced by the right-side World menu beside the Progress Bar. Dragon, Progress Bar, Garden, Battle Arena, Arcade, Shop/Upgrades and Stats share one menu with the current view highlighted. Level/purchase requirements and hover collection remain active. On screens700px wide or narrower, World starts collapsed and closes after choosing a feature. Desktop and390px browser checks verified navigation and mobile collapse.
