@@ -17,10 +17,11 @@ export function createGardenUI({getRoot,save,log,toast,refresh}){
  $('gardenHarvestAll').onclick=()=>{const results=harvestAll(getRoot());if(results.length){const coins=results.reduce((sum,r)=>sum+r.coin,0);log('Harvested '+results.length+' trees! +'+fmt(coins)+' Y');if(results.some(r=>r.levels))toast('LEVEL UP! Lv. '+getRoot().save.level);changed();}};
  $('gardenRemoveMode').onclick=()=>{removeMode=!removeMode;lastSignature='';render();};
  $('gardenBuyPlot').onclick=()=>{if(buyPlot(getRoot())){log('Garden plot '+getRoot().garden.capacity+' unlocked!');changed();}};
- function render(){
+ function render(background=false){
  const r=getRoot(),g=ensureGarden(r),now=Date.now();const expired=advanceGarden(r,now);if(expired.length){log(expired.length+' Garden trees expired.');save();}
  const states=Array.from({length:25},(_,i)=>slotState(r,i,now)),ready=states.filter(s=>s.state==='ready').length,t=selected();
  for(const b of document.querySelectorAll('[data-tab]'))if(b.dataset.tab==='garden')b.textContent=ready?'Garden · '+ready:'Garden';
+ if(background)return;
  $('gardenPoints').textContent=fmt(g.points);$('gardenExp').textContent=fmt(g.exp);$('gardenCapacity').textContent=g.capacity+' / 25';$('gardenHarvests').textContent=fmt(g.harvests);
  $('gardenSeedName').textContent=t.name;$('gardenSeedGrow').textContent=time(t.grow*1000);$('gardenSeedLife').textContent=time(t.life*1000);$('gardenSeedValue').textContent=fmt(t.value)+' Y';$('gardenSeedExp').textContent='+'+t.exp+' GP / EXP';
  const costs=[t.coin?fmt(t.coin)+' Y':'',t.green?fmt(t.green)+' G':'',t.blue?fmt(t.blue)+' B':'',t.points?fmt(t.points)+' GP':''].filter(Boolean);$('gardenSeedCost').textContent=costs.length?costs.join(' + '):'FREE';
@@ -35,5 +36,5 @@ export function createGardenUI({getRoot,save,log,toast,refresh}){
  return `<button class="garden-plot ${s.state} ${removeMode&&occupied?'remove-target':''}" data-plot="${i}" ${disabled?'disabled':''} aria-label="Plot ${i+1}: ${occupied?s.tree.name+', ':''}${action}" title="${occupied?'Expires in '+time(s.life):'Plot '+(i+1)}"><b>${String(i+1).padStart(2,'0')}</b><img class="plot-ground" src="assets/garden-plot.png" alt="">${graphic}<span>${action}</span>${occupied?`<small>${s.state==='ready'?time(s.life)+' left':Math.floor(s.progress*100)+'%'}</small>`:''}</button>`;
  }).join('');
  }
- return {render};
+ return {render,background:()=>render(true)};
 }

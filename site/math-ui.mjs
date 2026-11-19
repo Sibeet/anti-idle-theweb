@@ -12,5 +12,5 @@ export function createMathUI({getRoot,save,log,refresh,isActive}){
  for(let i=0;i<4;i++){const b=$('mathAnswer'+i),choice=game?.question.choices[i];b.textContent=choice===undefined?'—':String(choice)+' ['+(i+1)+']';b.disabled=!game?.running||choice===undefined;}
  $('mathMessage').textContent=result?'FINISH · +'+fmt(result.coin)+' Y · +'+fmt(result.exp)+' EXP · +'+fmt(result.green)+' G · +'+fmt(result.blue)+' B':game?.message??'60 SECONDS';
  $('mathHistory').innerHTML=(game?.history??[]).map(h=>`<div><span>${h.text.replaceAll('<','&lt;')}</span><b>${h.seconds.toFixed(2)}s · +${fmt(h.score)}</b></div>`).join('');}
- return {render,handleKey,running:()=>!!game?.running};
+ return {render,update,handleKey,running:()=>!!game?.running};
 }

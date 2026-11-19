@@ -17,5 +17,5 @@ export function createMindUI({getRoot,save,log,refresh,isActive}){
  const names={2:'GOAL',3:'NEARBY',4:'DIRECTION',5:'DISTANCE',6:'+5s',7:'+2 TURNS',9:'WHITE COIN'};
  for(let i=0;i<200;i++){const c=game?.cells[i],frame=c?.open?c.kind:c?.flag?8:1,b=$('mindCell'+i),img=$('mindImage'+i),number=$('mindNumber'+i),src='assets/mind-'+frame+'.png';if(img.getAttribute('href')!==src)img.setAttribute('href',src);img.setAttribute('transform','rotate('+(c?.open&&c.kind===4?c.arrow:0)+' 35.5 35.5)');number.textContent=c?.open&&[3,5].includes(c.kind)?c.number:'';b.className='mind-tile tile-'+frame+(game?.focus===i?' focused':'');b.disabled=!game?.running;b.setAttribute('aria-label','Tile '+(i%20+1)+', '+(Math.floor(i/20)+1)+': '+(c?.open?names[c.kind]+([3,5].includes(c.kind)?' '+c.number:c.kind===4?' '+({0:'up',90:'right',180:'down',270:'left'}[c.arrow]):''):c?.flag?'Flagged':'Covered'));}
  }
- return {render,handleKey,clearInput:()=>{heldF=false;},running:()=>!!game?.running};
+ return {render,update,handleKey,clearInput:()=>{heldF=false;},running:()=>!!game?.running};
 }

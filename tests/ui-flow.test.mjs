@@ -4,10 +4,10 @@ import {readFileSync} from 'node:fs';
 import {newGame} from '../site/game.mjs';
 import {ensureArena} from '../site/combat.mjs';
 import {settleGrowth} from '../site/growth.mjs';
-const ids=new Map(),nodes=[],listeners={};let raf;
+const ids=new Map(),nodes=[],listeners={};let raf;const domWrites={attributes:0,progress:0,byId:{}};
 class Element{
- constructor(tag='div',attrs={}){this.tagName=tag.toUpperCase();this.attrs={...attrs};this.dataset={};for(const [k,v] of Object.entries(attrs))if(k.startsWith('data-'))this.dataset[k.slice(5).replace(/-([a-z])/g,(_,c)=>c.toUpperCase())]=v;this.id=attrs.id;this.value=attrs.value??'';this.textContent='';this.disabled=false;this.children=[];this.options=[];this.style={setProperty(){}};this.classes=new Set((attrs.class??'').split(' '));this.classList={contains:x=>this.classes.has(x),add:(...x)=>x.forEach(x=>this.classes.add(x)),remove:(...x)=>x.forEach(x=>this.classes.delete(x)),toggle:(x,force)=>{const on=force===undefined?!this.classes.has(x):force;if(on)this.classes.add(x);else this.classes.delete(x);return on;}};this.parentElement={setAttribute(){}};nodes.push(this);if(this.id)ids.set(this.id,this);}
- setAttribute(k,v){this.attrs[k]=String(v);}getAttribute(k){return this.attrs[k]??null;}
+ constructor(tag='div',attrs={}){this.tagName=tag.toUpperCase();this.attrs={...attrs};this.dataset={};for(const [k,v] of Object.entries(attrs))if(k.startsWith('data-'))this.dataset[k.slice(5).replace(/-([a-z])/g,(_,c)=>c.toUpperCase())]=v;this.id=attrs.id;this.value=attrs.value??'';this.textContent='';this.disabled=false;this.children=[];this.options=[];this.style=new Proxy({setProperty(){}},{set:(target,key,value)=>{if(this.id==='progressFill'&&key==='height')domWrites.progress++;target[key]=value;return true;}});this.classes=new Set((attrs.class??'').split(' '));this.classList={contains:x=>this.classes.has(x),add:(...x)=>x.forEach(x=>this.classes.add(x)),remove:(...x)=>x.forEach(x=>this.classes.delete(x)),toggle:(x,force)=>{const on=force===undefined?!this.classes.has(x):force;if(on)this.classes.add(x);else this.classes.delete(x);return on;}};this.parentElement={setAttribute(){}};nodes.push(this);if(this.id)ids.set(this.id,this);}
+ setAttribute(k,v){domWrites.attributes++;domWrites.byId[this.id]=(domWrites.byId[this.id]??0)+1;this.attrs[k]=String(v);}getAttribute(k){return this.attrs[k]??null;}
  set innerHTML(html){this.html=html;parse(html);if(this.tagName==='SELECT'){this.options=[...html.matchAll(/<option\b([^>]*)>([^<]*)/g)].map(m=>{const e=new Element('option',attributes(m[1]));e.textContent=m[2];return e;});this.value=this.options[0]?.value??'';}}
  get innerHTML(){return this.html??'';}
  querySelector(selector){if(selector==='b')return this.bold??=new Element('b');return query(selector);}
@@ -28,6 +28,20 @@ if(process.env.FEATURE_GATE_TEST==='1'){
  const fresh=newGame();localStorage.setItem('anti-idle-web-prototype-v1',JSON.stringify(fresh));globalThis.location={hash:'#arcade'};
 }
 await import('../site/app.mjs');
+if(process.env.RENDER_BENCHMARK==='1'){domWrites.attributes=0;domWrites.progress=0;domWrites.byId={};let now=performance.now();for(let i=0;i<120;i++)raf(now+i*1000/60);assert.equal(domWrites.byId.mmrxNote0??0,0,'hidden MMRX must not repaint');assert.equal(domWrites.byId.mindCell0??0,0,'hidden MindSweeper must not repaint');assert.ok(domWrites.progress>=120,'progress fill must draw on every animation frame');assert.ok(domWrites.attributes<1000,'idle Dragon should not repaint all game boards');console.log(JSON.stringify({frames:120,progressDraws:domWrites.progress,attributeWrites:domWrites.attributes,hiddenMmrX:domWrites.byId.mmrxNote0??0,hiddenMind:domWrites.byId.mindCell0??0}));process.exit(0);}
+if(process.env.BAR_INPUT_TEST==='1'){
+ const r=newGame();r.features.arcade=true;r.progPercent=99.99;
+ await ids.get('importFile').onchange({target:{files:[{size:20000,text:async()=>JSON.stringify(r)}],value:''}});
+ nodes.find(n=>n.dataset.tab==='arcade').click();
+ const bar=ids.get('barButton'),saved=()=>{ids.get('saveButton').click();return JSON.parse(localStorage.getItem('anti-idle-web-prototype-v1'));};
+ let now=performance.now();const advance=n=>{for(let i=0;i<n;i++){now+=250;raf(now);}};
+ bar.onpointerenter({pointerType:'mouse'});assert.equal(saved().save.rewardClaim,0,'entering before full must not pay');advance(1);assert.equal(saved().save.rewardClaim,1,'bar filling under stationary cursor must pay');assert.equal(ids.get('arcade').classes.has('hidden'),false,'hover must preserve content');
+ bar.click();assert.equal(saved().save.rewardClaim,1,'click after hover must not double pay');
+ advance(20);assert.ok(saved().save.rewardClaim>=2,'remaining hovered can claim the next full bar');bar.onpointerleave();const count=saved().save.rewardClaim;advance(30);assert.equal(saved().save.rewardClaim,count,'leaving stops hover collection');
+ bar.onpointerenter({pointerType:'touch'});bar.onpointermove({pointerType:'touch'});advance(1);assert.equal(saved().save.rewardClaim,count,'touch pointer entry is not hover');bar.click();assert.equal(saved().save.rewardClaim,count+1,'touch/click activation still works');
+ bar.onpointerenter({pointerType:'mouse'});listeners.blur();advance(30);assert.equal(saved().save.rewardClaim,count+1,'blur clears hover');bar.onpointerenter({pointerType:'mouse'});assert.equal(saved().save.rewardClaim,count+2,'entering a full bar pays immediately');bar.click();assert.equal(saved().save.rewardClaim,count+2);
+ console.log('PASS: hover entry, fill under stationary cursor, repeat readiness, leave/blur cancellation, touch/click fallback, duplicate guard and current content preservation.');process.exit(0);
+}
 if(process.env.FEATURE_GATE_TEST==='1'){
  assert.equal(ids.get('shop').classes.has('hidden'),false,'locked URL routes to Feature Shop');
  assert.equal(ids.get('arcade').classes.has('hidden'),true);assert.equal(ids.get('mode').disabled,true);assert.equal(ids.get('selectMind').disabled,true);assert.equal(ids.get('selectMmrx').disabled,true);assert.equal(ids.get('selectBalance').disabled,true);assert.equal(ids.get('dragonFeed').disabled,true);
