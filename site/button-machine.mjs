@@ -1,6 +1,6 @@
-import {awardExperience} from './game.mjs?v=0.21.0';
-import {gainBoost} from './core.mjs?v=0.21.0';
-import {owns} from './features.mjs?v=0.21.0';
+import {awardExperience} from './game.mjs?v=0.22.0';
+import {gainBoost} from './core.mjs?v=0.22.0';
+import {owns} from './features.mjs?v=0.22.0';
 const localDay=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 export const GRADE=['','MISS','HIT','GOOD','NICE','GREAT','EXCELLENT!','PERFECT!'];
 export const GRANDPA_COSTS=[0,3000000,15000000,75000000,300000000,1500000000,7500000000,30000000000,150000000000,750000000000,3000000000000,Infinity];

@@ -1,5 +1,5 @@
-import {TREES,ensureGarden,advanceGarden,slotState,canPlant,plantTree,harvestTree,harvestAll,plantAll,clearTree,plotCost,buyPlot} from './garden.mjs?v=0.21.0';
-import {GARDEN_ART} from './garden-art.mjs?v=0.21.0';
+import {TREES,ensureGarden,advanceGarden,slotState,canPlant,plantTree,harvestTree,harvestAll,plantAll,clearTree,plotCost,buyPlot} from './garden.mjs?v=0.22.0';
+import {GARDEN_ART} from './garden-art.mjs?v=0.22.0';
 export function createGardenUI({getRoot,save,log,toast,refresh}){
  const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US');let removeMode=false,lastSignature='';
  const time=ms=>{const n=Math.max(0,Math.ceil(ms/1000));return n>=3600?Math.floor(n/3600)+'h '+Math.floor(n%3600/60)+'m':Math.floor(n/60)+':'+String(n%60).padStart(2,'0');};

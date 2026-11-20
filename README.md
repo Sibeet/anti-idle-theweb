@@ -16,10 +16,10 @@ python -m http.server 8080 --directory dist
 
 Open http://localhost:8080/. Relative paths support the GitHub Pages repository subdirectory. The main-branch workflow tests, builds and deploys to GitHub Pages.
 
-## Current scope — 0.21.0
+## Current scope — 0.22.0
 
 - Dragon of Wisdom is the default starting screen, with original scene artwork, a next-feature goal, feeding from best level 50, source feeding costs, blue coin payout, daily reset, Friday meter bonus, discovered speeches, Dragon Boost, and level rewards.
-- Feature Shop uses the current v1853 costs and gates: Idle Mode Lv.2 / 500 Y; Boost Generator Lv.4 / 2,000 Y; Garden Lv.12 / 10,000 Y; Battle Arena Lv.25 / 50,000 Y; Arcade Lv.80 / 750,000 Y. These features require purchase, not just reaching the level.
+- Feature Shop uses the current v1853 costs and gates: Idle Mode Lv.2 / 500 Y; Boost Generator Lv.4 / 2,000 Y; Garden Lv.12 / 10,000 Y; Battle Arena Lv.25 / 50,000 Y; Button Machine Lv.40 / 150,000 Y; Money Printer Lv.60 / 300,000 Y; Arcade Lv.80 / 750,000 Y. These features require purchase, not just reaching the level.
 - Arcade Pack requires Arcade and 750 B, unlocking MindSweeper, MMRX and Balance 3. Other five Normal games are included in the base Arcade.
 - Persistent right Progress Bar with hover collection (including when it fills under a stationary cursor), touch/click/keyboard fallback, claim rewards, level growth, boost, local saves and JSON export/import.
 - Early Battle Arena: 33 monsters, four bosses, three training/forest zones and Pub, ten weapons, five armor slots/25 recipes, active/passive skills, MP, growth and bestiary.
@@ -49,3 +49,7 @@ A 120-frame DOM-adapter benchmark on the idle Dragon screen reduced setAttribute
 The feature tabs above the game and duplicate bottom content links have been replaced by the right-side World menu beside the Progress Bar. Dragon, Progress Bar, Garden, Battle Arena, Arcade, Shop/Upgrades and Stats share one menu with the current view highlighted. Level/purchase requirements and hover collection remain active. On screens700px wide or narrower, World starts collapsed and closes after choosing a feature. Desktop and390px browser checks verified navigation and mobile collapse.
 
 Button Machine: original Lv40 / Y150,000 unlock, aiming grades, 15-perfect chain guard, durability/repair, Purple shop and online Grandpas. Original sprites 6021 and 149. Crate drops are recorded; opening crates, Elite mode, careers/pets/events, boost-freeze/depletion and offline Grandpas are not implemented.
+
+## Money Printer — 0.22.0
+
+Original passive coin printing, 80 initial charges, recharge to 160 for 2 G, printer upgrades through Lv400 with best-level gates, critical Green Coin prints, Super Battery (750 B) and recharge to 200 from any feature. Printer continues while other content is open; battery/progress/counters persist. Online ticking only; quest/achievement hooks, Epic skills and Battery Charger consumables remain pending.

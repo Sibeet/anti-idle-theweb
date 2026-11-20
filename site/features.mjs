@@ -5,11 +5,13 @@ export const FEATURES=[
  {id:'garden',name:'Garden',level:12,cost:10000},
  {id:'arena',name:'Battle Arena',level:25,cost:50000},
  {id:'button',name:'Button Machine',level:40,cost:150000},
+ {id:'printer',name:'Money Printer',level:60,cost:300000},
  {id:'arcade',name:'Arcade',level:80,cost:750000},
+ {id:'superBattery',name:'Super Battery',level:0,cost:750,currency:'blueCoin',requires:'printer'},
  {id:'arcadePack',name:'Arcade Pack',level:0,cost:750,currency:'blueCoin',requires:'arcade'},
 ];
 export const newFeatures=()=>({version:1,...Object.fromEntries(FEATURES.map(f=>[f.id,false]))});
-export function validFeatures(f){return !!f&&f.version===1&&FEATURES.every(x=>typeof f[x.id]==='boolean'||['arcadePack','button'].includes(x.id)&&f[x.id]===undefined);}
+export function validFeatures(f){return !!f&&f.version===1&&FEATURES.every(x=>typeof f[x.id]==='boolean'||['arcadePack','button','printer','superBattery'].includes(x.id)&&f[x.id]===undefined);}
 export function owns(r,id){return r.features?.[id]===true;}
 export function buyFeature(r,id){const f=FEATURES.find(f=>f.id===id);if(!f||owns(r,id)||r.save.level<f.level||r.save[f.currency??'coin']<f.cost||f.requires&&!owns(r,f.requires))return false;r.features[id]=true;r.save[f.currency??'coin']-=f.cost;if(id==='boost')r.save.featureBoostGen=true;return true;}
 export function migrateFeatures(r,old){

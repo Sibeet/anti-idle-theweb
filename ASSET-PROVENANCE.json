@@ -730,6 +730,20 @@
       "source_frame": 7,
       "role": "Button Machine original artwork",
       "sha256": "014aec1d4979591aac3f1e061204fa0f4255809ba2780505fcf2f617f27a7fb7"
+    },
+    {
+      "file": "assets/printer-original.png",
+      "source_sprite": 2804,
+      "source_frame": 1,
+      "role": "Money Printer original artwork",
+      "sha256": "0c1e4fbecef00361decb1b05eee1c740f946b435baab992425c186293de457b2"
+    },
+    {
+      "file": "assets/printer-bill.png",
+      "source_sprite": 6061,
+      "source_frame": 1,
+      "role": "Money Printer original artwork",
+      "sha256": "8ef044e638078b2c2537fb6b751e277e4997995ef2916738220454ec8e9cfb66"
     }
   ],
   "note": "PNG files copied byte-for-byte from sprite export. SVG viewBox selects the source background stage bounds without repainting. Hero reward bounce is a new CSS effect, not a recovered animation."

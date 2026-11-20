@@ -165,5 +165,23 @@
     ],
     "runtime": "button-machine.mjs",
     "scope": "Normal mode; 40 Hz target motion; online-only Grandpas; no elite/career/pet/event modifiers; crate opening and boost freeze pending"
+  },
+  "money_printer": {
+    "sources": [
+      "frame_13/DoAction_2.as: checkPrinter",
+      "frame_3/DoAction.as: printMoney",
+      "DefineSprite_7980/frame_9: charge/upgrade",
+      "DefineSprite_10159/frame_29/PlaceObject2_1602_401",
+      "DefineSprite_10159/frame_30/PlaceObject2_1602_226"
+    ],
+    "runtime": "printer.mjs",
+    "verification": "256 differential ticks against AS-compatible original checkPrinter/printMoney",
+    "adaptations": [
+      "Progress and cumulative counters stored in port save schema",
+      "Normal save slot; no challenge slot 24 upgrade restriction",
+      "Online 40 Hz ticking; no offline catch-up",
+      "Super Battery remains accessible in shared right rail",
+      "Quest/achievement hooks, Epic Battery Booster and Battery Charger consumable not ported"
+    ]
   }
 }

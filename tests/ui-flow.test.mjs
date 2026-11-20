@@ -28,6 +28,14 @@ if(process.env.FEATURE_GATE_TEST==='1'){
  const fresh=newGame();localStorage.setItem('anti-idle-web-prototype-v1',JSON.stringify(fresh));globalThis.location={hash:'#arcade'};
 }
 await import('../site/app.mjs');
+if(process.env.PRINTER_TEST==='1'){
+ const r=newGame();r.save.level=r.save.bestLevel=60;r.save.coin=1000000;r.save.greenCoin=4;r.save.blueCoin=750;r.printer={version:1,level:1,charge:80,progress:99.99,prints:0,criticals:0,totalMoney:0,totalCharge:0,lastCoin:0,lastGreen:0,lastBlue:0};
+ await ids.get('importFile').onchange({target:{files:[{size:20000,text:async()=>JSON.stringify(r)}],value:''}});
+ nodes.find(n=>n.dataset.tab==='printer').click();assert.equal(ids.get('shop').classes.has('hidden'),false);ids.get('unlockprinter').click();ids.get('unlocksuperBattery').click();nodes.find(n=>n.dataset.tab==='printer').click();ids.get('printerCharge').click();ids.get('printerUpgrade').click();assert.equal(ids.get('printerLevel').textContent,'2');assert.equal(ids.get('printerBattery').textContent,'200');
+ nodes.find(n=>n.dataset.tab==='dragon').click();let now=performance.now();now+=25;raf(now);ids.get('saveButton').click();let saved=JSON.parse(localStorage.getItem('anti-idle-web-prototype-v1'));assert.equal(saved.printer.prints,1);assert.equal(saved.printer.charge,195);assert.equal(ids.get('dragon').classes.has('hidden'),false);
+ ids.get('quickPrinterCharge').click();ids.get('saveButton').click();saved=JSON.parse(localStorage.getItem('anti-idle-web-prototype-v1'));assert.equal(saved.printer.charge,200);assert.ok(saved.save.greenCoin>=0);assert.equal(ids.get('dragon').classes.has('hidden'),false);
+ console.log('PASS: actual printer Feature Shop purchase, Super Battery dependency, recharge/upgrade, background print/save and remote battery without leaving Dragon.');process.exit(0);
+}
 if(process.env.BUTTON_MACHINE_TEST==='1'){
  const r=newGame();r.save.level=r.save.bestLevel=40;r.features.button=true;r.save.coin=300000;
  await ids.get('importFile').onchange({target:{files:[{size:20000,text:async()=>JSON.stringify(r)}],value:''}});

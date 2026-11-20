@@ -1,5 +1,5 @@
-import {ensureArcade} from './arcade.mjs?v=0.21.0';
-import {awardExperience} from './game.mjs?v=0.21.0';
+import {ensureArcade} from './arcade.mjs?v=0.22.0';
+import {awardExperience} from './game.mjs?v=0.22.0';
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 function resetBeam(b,rng){b.speed=0;b.cross=rng()*250-rng()*250;b.loc=(b.index%2===0?-1:1)*500;b.power=Math.min(20,b.power+.1);}
 export function startAvoidance(rng=Math.random){const g={running:true,settled:false,score:0,avoided:0,multiplier:1,life:1,invincibility:3,shieldCharge:1,shieldTime:0,elapsed:0,second:0,acc:0,angle:0,direction:1,player:{x:250,y:175},pickup:{x:0,y:0,alpha:0,count:0},coin:{x:0,y:0,delay:0},message:'READY',beams:[]};for(let i=0;i<4;i++){const b={index:i,power:5,position:0};resetBeam(b,rng);b.position=b.loc;g.beams.push(b);}return g;}

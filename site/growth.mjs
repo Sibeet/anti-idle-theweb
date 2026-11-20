@@ -1,5 +1,5 @@
-import {skillLevel} from './skills.mjs?v=0.21.0';
-import {arenaRank,weapon,equipmentTotals} from './equipment.mjs?v=0.21.0';
+import {skillLevel} from './skills.mjs?v=0.22.0';
+import {arenaRank,weapon,equipmentTotals} from './equipment.mjs?v=0.22.0';
 // Normal-mode baseline restored in frame_5/DoAction.as:5279-5284.
 // Rank increments: sprite 5992/frame_1/DoAction_2.as:5725-5738.
 const RANK_STATS=[null,{maxHp:500,maxMana:300,attack:100,defense:100,accuracy:50,evasion:50}];
