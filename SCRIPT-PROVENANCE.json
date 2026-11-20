@@ -183,5 +183,16 @@
       "Super Battery remains accessible in shared right rail",
       "Quest/achievement hooks, Epic Battery Booster and Battery Charger consumable not ported"
     ]
+  },
+  "progress_modes": {
+    "sources": [
+      "frame_12/DoAction.as: default progSpeedAuto=30 / progSpeedManual=100",
+      "frame_13/DoAction_2.as: progressUp",
+      "frame_3/DoAction.as: claimReward",
+      "DefineSprite_10159/frame_20: dispProgSpeed and upgrade releases"
+    ],
+    "runtime": "game.mjs / unchanged original core.mjs progressUp",
+    "scope": "Normal Progress rewards, mode-specific modifiers; careers/pets/modules/Epic/event hooks remain outside this port",
+    "migration": "progressVersion=1; recognize old 100+25*n equal-speed pair, rebase Idle to 30+25*n and cap at 200; Manual cap500"
   }
 }

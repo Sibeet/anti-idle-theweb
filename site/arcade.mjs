@@ -1,4 +1,4 @@
-import {awardExperience} from './game.mjs?v=0.22.0';
+import {awardExperience} from './game.mjs?v=0.22.1';
 const CELL_ORDER=[...Array.from({length:60},(_,i)=>Math.floor(i/10)*12+i%10),...Array.from({length:12},(_,i)=>Math.floor(i/2)*12+10+i%2)];
 export function ensureArcade(r){return r.arcade??={version:1,best:0,total:0,plays:0,medals:0,whiteCoins:0};}
 export function validArcade(a){const record=v=>!!v&&['best','total','plays'].every(k=>Number.isSafeInteger(v[k])&&v[k]>=0)&&v.best<=v.total;return !!a&&a.version===1&&record(a)&&['medals','whiteCoins'].every(k=>Number.isSafeInteger(a[k])&&a[k]>=0)&&['math','pong','avoidance','mind','balance','count','mmrx'].every(k=>a[k]===undefined||record(a[k]));}

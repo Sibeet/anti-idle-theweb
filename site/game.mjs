@@ -1,25 +1,25 @@
-import {validPrinter} from './printer.mjs?v=0.22.0';
-import {validButtonMachine} from './button-machine.mjs?v=0.22.0';
-import {newFeatures,validFeatures,migrateFeatures,owns} from './features.mjs?v=0.22.0';
-import {validDragon,ensureDragon} from './dragon.mjs?v=0.22.0';
-import {validArcade} from './arcade.mjs?v=0.22.0';
-import {validGarden} from './garden.mjs?v=0.22.0';
-import {region,ENEMY_DATA} from './regions.mjs?v=0.22.0';
-import {validSkills} from './skills.mjs?v=0.22.0';
-import {baseStats,growthStats,settleGrowth} from './growth.mjs?v=0.22.0';
-import {arenaRank,validEquipment} from './equipment.mjs?v=0.22.0';
-import {calcReqExp,progressUp,gainBoost} from './core.mjs?v=0.22.0';
-export function newGame(){return {version:1,features:newFeatures(),fps:40,saveid:0,progPercent:0,boostMax:500,idlerAppreciate:false,curCareerLevel:[0,0],save:{level:1,bestLevel:1,gDifficulty:1,banned:0,gOldAscension:false,totalExp:0,currentExp:0,idleMode:false,progStore:100,progSpeedManual:100,progSpeedAuto:100,careerLevel:[0,0],totalStupidity:0,permaBanPenalty:Array(32).fill(0),boost:100,boostPurchased:0,featureBoostGen:false,rewardClaim:0,coin:0,greenCoin:0,blueCoin:0},upgrades:0,log:[]};}
+import {validPrinter} from './printer.mjs?v=0.22.1';
+import {validButtonMachine} from './button-machine.mjs?v=0.22.1';
+import {newFeatures,validFeatures,migrateFeatures,owns} from './features.mjs?v=0.22.1';
+import {validDragon,ensureDragon} from './dragon.mjs?v=0.22.1';
+import {validArcade} from './arcade.mjs?v=0.22.1';
+import {validGarden} from './garden.mjs?v=0.22.1';
+import {region,ENEMY_DATA} from './regions.mjs?v=0.22.1';
+import {validSkills} from './skills.mjs?v=0.22.1';
+import {baseStats,growthStats,settleGrowth} from './growth.mjs?v=0.22.1';
+import {arenaRank,validEquipment} from './equipment.mjs?v=0.22.1';
+import {calcReqExp,progressUp,gainBoost} from './core.mjs?v=0.22.1';
+export function newGame(){return {version:1,progressVersion:1,features:newFeatures(),fps:40,saveid:0,progPercent:0,boostMax:500,idlerAppreciate:false,curCareerLevel:[0,0],save:{level:1,bestLevel:1,gDifficulty:1,banned:0,gOldAscension:false,totalExp:0,currentExp:0,idleMode:false,progStore:100,progSpeedManual:100,progSpeedAuto:30,careerLevel:[0,0],totalStupidity:0,permaBanPenalty:Array(32).fill(0),boost:100,boostPurchased:0,featureBoostGen:false,rewardClaim:0,coin:0,greenCoin:0,blueCoin:0},upgrades:0,log:[]};}
 export function tick(r){ensureDragon(r);if(!owns(r,'idle'))r.save.idleMode=false;progressUp(r);r.progPercent=Math.min(r.progPercent,100);if(r.save.idleMode&&r.progPercent>=100)return claim(r);return null;}
-export function claim(r,rng=Math.random){if(r.progPercent<100)return null;const s=r.save;calcReqExp(r);r.progPercent-=100;s.rewardClaim++;let exp=Math.floor(1.4*s.boost*Math.pow(s.level,.6)),coin=Math.floor(.35*s.boost*Math.pow(s.level,.6)*(.8+rng()*.4)),green=100,blue=0;
-if(s.bestLevel<35)exp=Math.min(Math.floor(exp*.5),r.requiredExp*2);
-if(s.rewardClaim<=5){exp=4;coin=1000;green=200;blue=20;}
-if(!s.idleMode){green+=100;if(rng()<.1)blue++;}
-s.currentExp+=exp;s.coin+=coin;s.greenCoin+=green;s.blueCoin+=blue;const levels=awardExperience(r,0);
-return {exp,coin,green,blue,levels};}
-// Prototype shop prices; not yet a port of the original shop.
-export function upgradeCost(r){return Math.floor(500*Math.pow(1.6,r.upgrades));}
-export function buySpeed(r){const cost=upgradeCost(r);if(r.save.coin<cost||r.upgrades>=20)return false;r.save.coin-=cost;r.upgrades++;r.save.progSpeedManual+=25;r.save.progSpeedAuto+=25;return true;}
+export function progressReward(r,{idle=r.save.idleMode,rng=Math.random,claimNumber=r.save.rewardClaim+1}={}){const s=r.save;calcReqExp(r);let exp=Math.floor(1.4*s.boost*Math.pow(s.level,.6)),coin=Math.floor(.35*s.boost*Math.pow(s.level,.6)*(.8+rng()*.4)),green=100,blue=0;
+ if(s.bestLevel<35)exp=Math.min(Math.floor(exp*.5),r.requiredExp*2);if(claimNumber<=5){exp=4;coin=1000;green=200;blue=20;}
+ const penalty=s.permaBanPenalty??[],blueChance=[.1,.3,.4,.6][penalty[2]??0]??.1;if(!idle){green+=100;if(rng()<blueChance)blue++;}
+ const expMod=idle?[1,1.06,1.09,1.15][penalty[25]??0]:[1,1.1,1.15,1.25][penalty[17]??0],coinMod=idle?[1,1.06,1.09,1.15][penalty[36]??0]:[1,1.1,1.15,1.25][penalty[26]??0];exp=Math.floor(exp*(expMod??1));coin=Math.floor(coin*(coinMod??1));green+=([0,200,300,500][penalty[2]??0]??0);return {exp,coin,green,blue,blueChance:idle?0:blueChance};}
+export function claim(r,rng=Math.random){if(r.progPercent<100)return null;r.progPercent-=100;r.save.rewardClaim++;const result=progressReward(r,{rng,claimNumber:r.save.rewardClaim});r.save.coin+=result.coin;r.save.greenCoin+=result.green;r.save.blueCoin+=result.blue;const levels=awardExperience(r,result.exp);return {...result,levels};}
+// v1853 Progress shop, sprite 10159/frame 20. Each purchase adds 1 percentage point.
+export function upgradeCost(r,mode='manual'){const v=mode==='idle'?r.save.progSpeedAuto:r.save.progSpeedManual;if(mode==='idle')return v>=200?Infinity:v>=150?Math.floor((v-149)*180000):Math.floor(v*v*(v>=100?8:.8));return v>=500?Infinity:v>=400?Math.floor((v-398)*9000):v>=300?Math.floor((v-299)*180):Math.floor(v*v/(v>=200?500:5000));}
+export function buySpeed(r,mode='manual'){if(!['manual','idle'].includes(mode)||mode==='idle'&&!owns(r,'idle'))return false;const cost=upgradeCost(r,mode),currency=mode==='idle'?'greenCoin':'blueCoin';if(!Number.isFinite(cost)||r.save[currency]<cost)return false;r.save[currency]-=cost;r.save[mode==='idle'?'progSpeedAuto':'progSpeedManual']++;r.upgrades++;return true;}
+export function progressProfile(r,idle=r.save.idleMode){const sample={...r,progPercent:0,save:{...r.save,idleMode:idle}};progressUp(sample);const speed=idle?r.save.progSpeedAuto:Math.max(r.save.progSpeedManual,r.save.progSpeedAuto);return {speed,seconds:100/(sample.progPercent*r.fps),...progressReward(r,{idle,rng:()=>.5})};}
 export function buyBoost(r){if(!owns(r,'boost')||r.save.greenCoin<100||r.save.boost>=r.boostMax)return false;r.save.greenCoin-=100;gainBoost(r,25,1);return true;}
 export function restore(text){try{
  const parsed=JSON.parse(text);if(!parsed||parsed.version!==1)return null;const r=newGame();
@@ -27,7 +27,10 @@ export function restore(text){try{
  const integer=(v,min=0,max=Number.MAX_SAFE_INTEGER)=>Number.isSafeInteger(v)&&v>=min&&v<=max;
  for(const key of ['level','bestLevel','gDifficulty','banned','totalExp','currentExp','boost','boostPurchased','rewardClaim','coin','greenCoin','blueCoin','progSpeedManual','progSpeedAuto']){const v=parsed.save?.[key];if(!finite(v))return null;r.save[key]=v;}
  if(!integer(r.save.level,1,8998)||!integer(r.save.bestLevel,r.save.level,8998)||r.save.boost<100||r.save.boost>1200||r.save.gDifficulty!==1)return null;
- r.save.idleMode=parsed.save.idleMode===true;r.upgrades=Math.min(20,Math.max(0,Math.floor(parsed.upgrades||0)));r.progPercent=Math.min(100,Math.max(0,Number(parsed.progPercent)||0));
+ r.save.idleMode=parsed.save.idleMode===true;r.upgrades=Math.min(590,Math.max(0,Math.floor(parsed.upgrades||0)));r.progPercent=Math.min(100,Math.max(0,Number(parsed.progPercent)||0));
+ if(parsed.progressVersion!==undefined&&parsed.progressVersion!==1)return null;
+ if(parsed.progressVersion===undefined&&r.save.progSpeedManual===100+25*r.upgrades&&r.save.progSpeedAuto===r.save.progSpeedManual)r.save.progSpeedAuto=30+25*r.upgrades;
+ r.save.progSpeedAuto=Math.min(200,r.save.progSpeedAuto);r.save.progSpeedManual=Math.min(500,r.save.progSpeedManual);
  if(parsed.features!==undefined&&!validFeatures(parsed.features))return null;
  r.features=parsed.features?{...newFeatures(),...parsed.features,arcadePack:parsed.features.arcadePack??migrateFeatures(r,parsed).arcadePack}:migrateFeatures(r,parsed);r.save.featureBoostGen=owns(r,'boost');if(!owns(r,'idle'))r.save.idleMode=false;
  if(parsed.dragon!==undefined){if(!validDragon(parsed.dragon,r.save.bestLevel))return null;r.dragon=structuredClone(parsed.dragon);}

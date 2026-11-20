@@ -16,7 +16,7 @@ python -m http.server 8080 --directory dist
 
 Open http://localhost:8080/. Relative paths support the GitHub Pages repository subdirectory. The main-branch workflow tests, builds and deploys to GitHub Pages.
 
-## Current scope — 0.22.0
+## Current scope — 0.22.1
 
 - Dragon of Wisdom is the default starting screen, with original scene artwork, a next-feature goal, feeding from best level 50, source feeding costs, blue coin payout, daily reset, Friday meter bonus, discovered speeches, Dragon Boost, and level rewards.
 - Feature Shop uses the current v1853 costs and gates: Idle Mode Lv.2 / 500 Y; Boost Generator Lv.4 / 2,000 Y; Garden Lv.12 / 10,000 Y; Battle Arena Lv.25 / 50,000 Y; Button Machine Lv.40 / 150,000 Y; Money Printer Lv.60 / 300,000 Y; Arcade Lv.80 / 750,000 Y. These features require purchase, not just reaching the level.
@@ -30,7 +30,7 @@ Legacy saves retain used content based on actual Arena/Garden/Arcade records. Em
 
 ## Remaining work
 
-The full original Newbie Tasks sequence, careers, pets, ascension and other late features are not implemented. The Dragon's first-feature goal is a small guide, not the complete original tutorial. The Sword of Ascendant and associated boss flow are not usable. Dragon cards, boxes and materials are recorded in the rewards ledger; their consumption systems are not yet implemented. Dragon 1.5x EXP/Coin time rewards are recorded, but their timers/multipliers are not connected yet. Original account-name speech uses Player. MMRX has visual timing without soundtrack. Arcade difficulty/rating/unranked systems and shops remain unported. Some combat timing and Progress Bar upgrade prices remain prototype values.
+The full original Newbie Tasks sequence, careers, pets, ascension and other late features are not implemented. The Dragon's first-feature goal is a small guide, not the complete original tutorial. The Sword of Ascendant and associated boss flow are not usable. Dragon cards, boxes and materials are recorded in the rewards ledger; their consumption systems are not yet implemented. Dragon 1.5x EXP/Coin time rewards are recorded, but their timers/multipliers are not connected yet. Original account-name speech uses Player. MMRX has visual timing without soundtrack. Arcade difficulty/rating/unranked systems and shops remain unported. Some combat timing remains approximate.
 
 ## Verification and sources
 
@@ -53,3 +53,7 @@ Button Machine: original Lv40 / Y150,000 unlock, aiming grades, 15-perfect chain
 ## Money Printer — 0.22.0
 
 Original passive coin printing, 80 initial charges, recharge to 160 for 2 G, printer upgrades through Lv400 with best-level gates, critical Green Coin prints, Super Battery (750 B) and recharge to 200 from any feature. Printer continues while other content is open; battery/progress/counters persist. Online ticking only; quest/achievement hooks, Epic skills and Battery Charger consumables remain pending.
+
+## Progress modes — 0.22.1
+
+Original base speeds: Manual 100%, Idle 30%. Separate +1% upgrades use B (Manual, cap 500%) and G (Idle, cap 200%) with original tiered costs. Manual uses the larger purchased speed; Idle uses its own speed. Normal per-claim EXP/Y are equal; Manual pays 200 G versus Idle 100 G and has a 10% +1 B chance. First five claims keep the original tutorial bonuses/acceleration. The Progress screen compares both speeds, current estimated cycle durations and rewards; the shared rail shows the current mode/speed/cycle. Known legacy prototype speed pairs migrate once from the incorrect 100/100 base, retaining purchased +25 increments up to original caps; currency/progress are preserved. Original progressUp differential tests and mode/shop/save/UI tests pass.

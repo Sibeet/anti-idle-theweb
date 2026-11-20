@@ -1,10 +1,10 @@
-import {owns} from './features.mjs?v=0.22.0';
-import {createNativeArcadeUI} from './native-arcade-ui.mjs?v=0.22.0';
-import {createMindUI} from './mind-ui.mjs?v=0.22.0';
-import {createAvoidanceUI} from './avoidance-ui.mjs?v=0.22.0';
-import {createPongUI} from './pong-ui.mjs?v=0.22.0';
-import {createMathUI} from './math-ui.mjs?v=0.22.0';
-import {ensureArcade,startWhack,stepWhack,hitWhack,finishWhack} from './arcade.mjs?v=0.22.0';
+import {owns} from './features.mjs?v=0.22.1';
+import {createNativeArcadeUI} from './native-arcade-ui.mjs?v=0.22.1';
+import {createMindUI} from './mind-ui.mjs?v=0.22.1';
+import {createAvoidanceUI} from './avoidance-ui.mjs?v=0.22.1';
+import {createPongUI} from './pong-ui.mjs?v=0.22.1';
+import {createMathUI} from './math-ui.mjs?v=0.22.1';
+import {ensureArcade,startWhack,stepWhack,hitWhack,finishWhack} from './arcade.mjs?v=0.22.1';
 export function createArcadeUI({getRoot,save,log,refresh}){
  const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US');let selected='whack',owner=getRoot(),game=null,last=performance.now(),result=null;
  const mathUI=createMathUI({getRoot,save,log,refresh,isActive:()=>selected==='math'&&!$('arcade').classList.contains('hidden')});

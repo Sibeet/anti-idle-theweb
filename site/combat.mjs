@@ -1,9 +1,9 @@
-import {skillLevel,activeSkill,ACTIVE_SKILLS} from './skills.mjs?v=0.22.0';
-import {resetEnemyEffects,effectiveEnemy,enemyEffects} from './enemy-effects.mjs?v=0.22.0';
-import {region,ENEMY_DATA,chooseEnemy} from './regions.mjs?v=0.22.0';
-import {baseStats,growthStats,settleGrowth} from './growth.mjs?v=0.22.0';
-import {weapon,arenaRank,equipmentTotals} from './equipment.mjs?v=0.22.0';
-import {awardExperience} from './game.mjs?v=0.22.0';
+import {skillLevel,activeSkill,ACTIVE_SKILLS} from './skills.mjs?v=0.22.1';
+import {resetEnemyEffects,effectiveEnemy,enemyEffects} from './enemy-effects.mjs?v=0.22.1';
+import {region,ENEMY_DATA,chooseEnemy} from './regions.mjs?v=0.22.1';
+import {baseStats,growthStats,settleGrowth} from './growth.mjs?v=0.22.1';
+import {weapon,arenaRank,equipmentTotals} from './equipment.mjs?v=0.22.1';
+import {awardExperience} from './game.mjs?v=0.22.1';
 export const ENEMIES=ENEMY_DATA;
 export const TRAINING={maxHp:500,attack:100,minMult:80,accuracy:50,evasion:50,defense:100,respawn:2.5,enemyPeriod:2.5};
 export function ensureArena(r){

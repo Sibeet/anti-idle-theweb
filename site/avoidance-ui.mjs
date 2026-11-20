@@ -1,5 +1,5 @@
-import {ensureArcade} from './arcade.mjs?v=0.22.0';
-import {startAvoidance,stepAvoidance,finishAvoidance,shieldAvoidance} from './avoidance.mjs?v=0.22.0';
+import {ensureArcade} from './arcade.mjs?v=0.22.1';
+import {startAvoidance,stepAvoidance,finishAvoidance,shieldAvoidance} from './avoidance.mjs?v=0.22.1';
 export function createAvoidanceUI({getRoot,save,log,refresh,isActive}){
  const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US');let owner=getRoot(),game=null,result=null,last=performance.now(),input={};
  const clearInput=()=>{input={};};

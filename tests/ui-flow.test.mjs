@@ -28,6 +28,11 @@ if(process.env.FEATURE_GATE_TEST==='1'){
  const fresh=newGame();localStorage.setItem('anti-idle-web-prototype-v1',JSON.stringify(fresh));globalThis.location={hash:'#arcade'};
 }
 await import('../site/app.mjs');
+if(process.env.PROGRESS_MODES_TEST==='1'){
+ const r=newGame();r.features.idle=true;r.save.level=r.save.bestLevel=50;r.save.rewardClaim=10;r.save.greenCoin=2000;r.save.blueCoin=10;
+ await ids.get('importFile').onchange({target:{files:[{size:20000,text:async()=>JSON.stringify(r)}],value:''}});nodes.find(n=>n.dataset.tab==='home').click();assert.ok(ids.get('manualPreview').textContent.includes('100%'));assert.ok(ids.get('idlePreview').textContent.includes('30%'));assert.ok(ids.get('manualPreview').textContent.includes('200 G'));assert.ok(ids.get('idlePreview').textContent.includes('100 G'));assert.ok(ids.get('modeDetail').textContent.includes('Manual 100%'));
+ ids.get('mode').click();assert.ok(ids.get('modeDetail').textContent.includes('Idle 30%'));nodes.find(n=>n.dataset.tab==='shop').click();ids.get('buyIdleSpeed').click();ids.get('buySpeed').click();ids.get('saveButton').click();const saved=JSON.parse(localStorage.getItem('anti-idle-web-prototype-v1'));assert.equal(saved.save.progSpeedManual,101);assert.equal(saved.save.progSpeedAuto,31);assert.equal(saved.save.greenCoin,1280);assert.equal(saved.save.blueCoin,8);assert.ok(ids.get('modeDetail').textContent.includes('Idle 31%'));console.log('PASS: actual mode toggle, speed/reward previews, separate shop buttons and currency/save wiring.');process.exit(0);
+}
 if(process.env.PRINTER_TEST==='1'){
  const r=newGame();r.save.level=r.save.bestLevel=60;r.save.coin=1000000;r.save.greenCoin=4;r.save.blueCoin=750;r.printer={version:1,level:1,charge:80,progress:99.99,prints:0,criticals:0,totalMoney:0,totalCharge:0,lastCoin:0,lastGreen:0,lastBlue:0};
  await ids.get('importFile').onchange({target:{files:[{size:20000,text:async()=>JSON.stringify(r)}],value:''}});

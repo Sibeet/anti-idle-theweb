@@ -1,5 +1,5 @@
-import {owns} from './features.mjs?v=0.22.0';
-import {ensurePrinter,printerCapacity,printerPayout,printerUpgrade,upgradePrinter,chargePrinter} from './printer.mjs?v=0.22.0';
+import {owns} from './features.mjs?v=0.22.1';
+import {ensurePrinter,printerCapacity,printerPayout,printerUpgrade,upgradePrinter,chargePrinter} from './printer.mjs?v=0.22.1';
 export function createPrinterUI({getRoot,save,log,refresh}){
  const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US');
  function charge(){const r=getRoot(),before=ensurePrinter(r).charge;if(chargePrinter(r)){log('Printer charged: '+before+' → '+r.printer.charge+' · −2 G');save();refresh();}}

@@ -1,5 +1,5 @@
-import {ensureArcade} from './arcade.mjs?v=0.22.0';
-import {startMind,stepMind,clickMind,nextMindStage,mindPowers,useMindPower,finishMind} from './mind.mjs?v=0.22.0';
+import {ensureArcade} from './arcade.mjs?v=0.22.1';
+import {startMind,stepMind,clickMind,nextMindStage,mindPowers,useMindPower,finishMind} from './mind.mjs?v=0.22.1';
 export function createMindUI({getRoot,save,log,refresh,isActive}){
  const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US');let owner=getRoot(),game=null,result=null,last=performance.now(),flagMode=false,heldF=false;
  $('mindBoard').innerHTML=Array.from({length:200},(_,i)=>`<button id="mindCell${i}" data-mind="${i}" aria-label="Covered tile ${i+1}"><svg viewBox="20 20 31 31" aria-hidden="true"><image id="mindImage${i}" href="assets/mind-1.png" width="71" height="71"/></svg><span id="mindNumber${i}"></span></button>`).join('');
