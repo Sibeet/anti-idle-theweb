@@ -1,5 +1,5 @@
-import {ensureArcade} from './arcade.mjs?v=0.22.1';
-import {startPong,stepPong,finishPong,activatePongPower} from './pong.mjs?v=0.22.1';
+import {ensureArcade} from './arcade.mjs?v=0.23.0';
+import {startPong,stepPong,finishPong,activatePongPower} from './pong.mjs?v=0.23.0';
 export function createPongUI({getRoot,save,log,refresh,isActive}){
  const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US');let owner=getRoot(),game=null,last=performance.now(),result=null,drag=false,input={up:false,down:false};
  const clearInput=()=>{drag=false;input={up:false,down:false};};

@@ -16,7 +16,7 @@ python -m http.server 8080 --directory dist
 
 Open http://localhost:8080/. Relative paths support the GitHub Pages repository subdirectory. The main-branch workflow tests, builds and deploys to GitHub Pages.
 
-## Current scope — 0.22.1
+## Current scope — 0.23.0
 
 - Dragon of Wisdom is the default starting screen, with original scene artwork, a next-feature goal, feeding from best level 50, source feeding costs, blue coin payout, daily reset, Friday meter bonus, discovered speeches, Dragon Boost, and level rewards.
 - Feature Shop uses the current v1853 costs and gates: Idle Mode Lv.2 / 500 Y; Boost Generator Lv.4 / 2,000 Y; Garden Lv.12 / 10,000 Y; Battle Arena Lv.25 / 50,000 Y; Button Machine Lv.40 / 150,000 Y; Money Printer Lv.60 / 300,000 Y; Arcade Lv.80 / 750,000 Y. These features require purchase, not just reaching the level.
@@ -57,3 +57,7 @@ Original passive coin printing, 80 initial charges, recharge to 160 for 2 G, pri
 ## Progress modes — 0.22.1
 
 Original base speeds: Manual 100%, Idle 30%. Separate +1% upgrades use B (Manual, cap 500%) and G (Idle, cap 200%) with original tiered costs. Manual uses the larger purchased speed; Idle uses its own speed. Normal per-claim EXP/Y are equal; Manual pays 200 G versus Idle 100 G and has a 10% +1 B chance. First five claims keep the original tutorial bonuses/acceleration. The Progress screen compares both speeds, current estimated cycle durations and rewards; the shared rail shows the current mode/speed/cycle. Known legacy prototype speed pairs migrate once from the incorrect 100/100 base, retaining purchased +25 increments up to original caps; currency/progress are preserved. Original progressUp differential tests and mode/shop/save/UI tests pass.
+
+## Arena travel — 0.23.0
+
+Scene arrows and keyboard directions follow original adjacent paths while the region selector remains available. Main path extends through Night Forest, The Sky, Deadlands, Danger Zone, Desert and Beach. The Sky branches to Polluted Sky; Danger Zone leads to Dark Portal, then Secret Beach. Two side areas are hidden from the selector until discovered, with persistent discovery and rank checks. There are 99 original base enemy entries including the base Guardian. Danger Zone has no random encounters. Original 25% player damage applies in the two side areas. This does not implement every original stage, NPC mission, rare/Hardcore variants or full Guardian/Finalizer phases.

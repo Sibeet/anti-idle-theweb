@@ -1,4 +1,4 @@
-import {arenaRank} from './equipment.mjs?v=0.22.1';
+import {arenaRank} from './equipment.mjs?v=0.23.0';
 // Original passive definitions: sprite 5444 frames 2 and 7; costs: sprite 5420.
 export const SKILLS=[
  {id:54,name:'Basic Attack',rank:1,max:20,effect:'Basic / Auto power +5%'},

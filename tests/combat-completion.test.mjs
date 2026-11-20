@@ -27,10 +27,10 @@ assert.ok(raiseSkill(r,1));assert.equal(activeSkill(r,'quick').mp,71);assert.equ
 assert.ok(raiseSkill(r,54));assert.equal(activeSkill(r,'basic').power,105);
 const fresh=newGame();ensureArena(fresh);assert.equal(canCast(fresh,'power'),false);assert.equal(attack(fresh,()=>.5,'heal'),null);
 // Every original early monster can be selected by its area's uniform integer roll.
-assert.equal(ENEMIES.length,33);assert.deepEqual(REGIONS.slice(1).map(z=>z.pool.length),[9,14,19]);
+assert.equal(ENEMIES.filter(e=>e.id<=34).length,33);assert.deepEqual(REGIONS.slice(1,4).map(z=>z.pool.length),[9,14,19]);
 for(const z of REGIONS.slice(1))for(let i=0;i<z.pool.length;i++)assert.equal(chooseEnemy(z.id,()=>i/z.pool.length+.00001),z.pool[i]);
 // Clear every boss through the real attack/reward path, with independent encounters.
-for(const boss of ENEMIES.filter(e=>e.boss)){
+for(const boss of ENEMIES.filter(e=>e.id<=34&&e.boss)){
  travel(r,0);const zone=REGIONS.find(z=>z.id>0&&z.pool.includes(ENEMIES.indexOf(boss)));const slot=zone.pool.indexOf(ENEMIES.indexOf(boss));travel(r,zone.id,()=>slot/zone.pool.length+.00001);
  let n=0;while(a.enemyAlive&&n++<300){a.cooldown=0;a.mp=growthStats(r).maxMana;attack(r,()=>.5,'power');}
  assert.ok(n<300,boss.name+' must be defeatable');assert.ok(a.defeatedBosses.includes(boss.id));assert.ok(a.bestiary[boss.id]>0);

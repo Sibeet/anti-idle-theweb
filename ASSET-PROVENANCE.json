@@ -744,6 +744,531 @@
       "source_frame": 1,
       "role": "Money Printer original artwork",
       "sha256": "8ef044e638078b2c2537fb6b751e277e4997995ef2916738220454ec8e9cfb66"
+    },
+    {
+      "file": "assets/enemy-35.png",
+      "source_sprite": 4652,
+      "source_frame": 35,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "1bc5d6ae44d5722e86c58a1dc515081bfb7789c93359390c507779cb9718c4a1"
+    },
+    {
+      "file": "assets/enemy-36.png",
+      "source_sprite": 4652,
+      "source_frame": 36,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "b00b8fe446f93ac710a6ef2d5acecd0f37483ab77bbef434329a1b6314a4a357"
+    },
+    {
+      "file": "assets/enemy-37.png",
+      "source_sprite": 4652,
+      "source_frame": 37,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "821ab5d7910f2f5031f583ba1e30f3f57648498c1858cd79c840044e10a41a31"
+    },
+    {
+      "file": "assets/enemy-38.png",
+      "source_sprite": 4652,
+      "source_frame": 38,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "d73b96cf3e4028ddd1529db11383406e5b5e02dc39303e08bc686847f7fad292"
+    },
+    {
+      "file": "assets/enemy-39.png",
+      "source_sprite": 4652,
+      "source_frame": 39,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "856c6ece85505805eb939040ed548e5ced778749b56e3291faaadcd03243c2ff"
+    },
+    {
+      "file": "assets/enemy-40.png",
+      "source_sprite": 4652,
+      "source_frame": 40,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "a7e384949ac092c164a78861506e8783e92f0482dcfccfc87738843906b7e222"
+    },
+    {
+      "file": "assets/enemy-41.png",
+      "source_sprite": 4652,
+      "source_frame": 41,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "d7cc62bd245a8fb30f54dbe066c615b5d237b94e1492aa063cc2fd08e0eeee6c"
+    },
+    {
+      "file": "assets/enemy-42.png",
+      "source_sprite": 4652,
+      "source_frame": 42,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "795aa450679efe9b7eee1893f632eb65a218dfd7c4adfe593dcbd2fd8daa0f49"
+    },
+    {
+      "file": "assets/enemy-43.png",
+      "source_sprite": 4652,
+      "source_frame": 43,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "2d84df03975d7d7c64d1ea2309d6a6460a15e574572ea369bdda236c193b0887"
+    },
+    {
+      "file": "assets/enemy-44.png",
+      "source_sprite": 4652,
+      "source_frame": 44,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "21b464c3cc8ec4b93f2a89490c9a61f1a751436f15737bd1309fa1c00b874e95"
+    },
+    {
+      "file": "assets/enemy-45.png",
+      "source_sprite": 4652,
+      "source_frame": 45,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "c654738757541a227798c29c188efc69a1830e9702fa1fa4ef02765ae61117f3"
+    },
+    {
+      "file": "assets/enemy-46.png",
+      "source_sprite": 4652,
+      "source_frame": 46,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "e5407b48480792d166a6e08ca8a414676265bb3fff486530afbacce6ade2aa66"
+    },
+    {
+      "file": "assets/enemy-47.png",
+      "source_sprite": 4652,
+      "source_frame": 47,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "ce102ec47932557c9cd2fbb4df753c3938f1ced02ca5c8cef2f19a73fed5940b"
+    },
+    {
+      "file": "assets/enemy-48.png",
+      "source_sprite": 4652,
+      "source_frame": 48,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "40315d2b5508f14846d83f8ce1d0aa08c7d69af97f7268f483a01b89fe8c511a"
+    },
+    {
+      "file": "assets/enemy-49.png",
+      "source_sprite": 4652,
+      "source_frame": 49,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "b00ebdb010677ecf5c8e03993f78020d074f9f19d239e5aea2889aebf9c0e88f"
+    },
+    {
+      "file": "assets/enemy-50.png",
+      "source_sprite": 4652,
+      "source_frame": 50,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "0a5535f15038198ad9ad5d57ba5f8b91f5640bf6a72a1ac440a8f84b40eab582"
+    },
+    {
+      "file": "assets/enemy-51.png",
+      "source_sprite": 4652,
+      "source_frame": 51,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "009c77d30be2fdc195dad1cb22612eabeec80cb087742830721cadada0117307"
+    },
+    {
+      "file": "assets/enemy-52.png",
+      "source_sprite": 4652,
+      "source_frame": 52,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "66c4f6314fdbda29855fce47de1825dd6dba34b98207e72c8121227df690820a"
+    },
+    {
+      "file": "assets/enemy-53.png",
+      "source_sprite": 4652,
+      "source_frame": 53,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "e8adcc9893bea042cd3153020d472cdbf4a49dcca40628bdd28fcde0862eba12"
+    },
+    {
+      "file": "assets/enemy-54.png",
+      "source_sprite": 4652,
+      "source_frame": 54,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "5fd97554c7ac5eacf9e848b9cd4f072d5548f631a686e7f530fa99f479c91d2d"
+    },
+    {
+      "file": "assets/enemy-55.png",
+      "source_sprite": 4652,
+      "source_frame": 55,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "7c3201a59d24e4f1c1521756f6e1eed948d10034a66bcccbe4475508641b1675"
+    },
+    {
+      "file": "assets/enemy-56.png",
+      "source_sprite": 4652,
+      "source_frame": 56,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "bb6d64e43b22e918a810b8e0f84051f1ac172143398cb98002e4cd155d299e4b"
+    },
+    {
+      "file": "assets/enemy-57.png",
+      "source_sprite": 4652,
+      "source_frame": 57,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "2ee114daac0ca9a33880015a37acd3a348c32b1a80caa8ef8e9d9be46f27b25d"
+    },
+    {
+      "file": "assets/enemy-58.png",
+      "source_sprite": 4652,
+      "source_frame": 58,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "bbe9f447fcd4f164ebeb2004cff8aafa64dffde921af57a291c2b9b2913a9b9c"
+    },
+    {
+      "file": "assets/enemy-59.png",
+      "source_sprite": 4652,
+      "source_frame": 59,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "a1625142c20a5d4da9a768b54b49c3380a09b70c907adea891c9f85c500344eb"
+    },
+    {
+      "file": "assets/enemy-60.png",
+      "source_sprite": 4652,
+      "source_frame": 60,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "5263380f0e33ca9a3aa0f5535388306c9ca50427716c34c86d5283ed43a77614"
+    },
+    {
+      "file": "assets/enemy-61.png",
+      "source_sprite": 4652,
+      "source_frame": 61,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "ba044855cf97a13ae7701dbc954a73b544a53ec87279c23082f2cc2c3d96eeec"
+    },
+    {
+      "file": "assets/enemy-62.png",
+      "source_sprite": 4652,
+      "source_frame": 62,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "ba6aa925252f6548347fb8c67527cd96312455320ef84870924679919e1cb313"
+    },
+    {
+      "file": "assets/enemy-63.png",
+      "source_sprite": 4652,
+      "source_frame": 63,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "c71790e11c30e2caa3f7e7466a6f07c6baa0399745df26d16059c745e1d68e00"
+    },
+    {
+      "file": "assets/enemy-64.png",
+      "source_sprite": 4652,
+      "source_frame": 64,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "dc6487565be710c810f113092628512cbee15a949ec7ce6729242b6f7a681e34"
+    },
+    {
+      "file": "assets/enemy-65.png",
+      "source_sprite": 4652,
+      "source_frame": 65,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "2a8d59cf7b6b8f3e763b27080c5255f0206f883635e9088a678aa62e1e434e8a"
+    },
+    {
+      "file": "assets/enemy-66.png",
+      "source_sprite": 4652,
+      "source_frame": 66,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "a6b115ba51ed0a55d51ced159e7c99803b3da4056900f4d9def6e32ff41bf725"
+    },
+    {
+      "file": "assets/enemy-67.png",
+      "source_sprite": 4652,
+      "source_frame": 67,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "d431807bbc28155350d019955231670129b32be8772d5106293608bb9c95161d"
+    },
+    {
+      "file": "assets/enemy-68.png",
+      "source_sprite": 4652,
+      "source_frame": 68,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "d94e132791378f0f2c25f0353e7682f0a3e32a9c241ac29a45138a2b15be9279"
+    },
+    {
+      "file": "assets/enemy-69.png",
+      "source_sprite": 4652,
+      "source_frame": 69,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "94cf4656beed261ca63370f1749c66e3c71086949cfc0f8e094fb4ddd53c0328"
+    },
+    {
+      "file": "assets/enemy-70.png",
+      "source_sprite": 4652,
+      "source_frame": 70,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "ef360222777cd2433192418d2748aac327ae6da37c2bce8e455bf0836b18ad51"
+    },
+    {
+      "file": "assets/enemy-71.png",
+      "source_sprite": 4652,
+      "source_frame": 71,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "f8dee735863047a57067c455ac8173ab2cff2acb46448ed4c336061efd2924e5"
+    },
+    {
+      "file": "assets/enemy-72.png",
+      "source_sprite": 4652,
+      "source_frame": 72,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "3985a629a359f8aa8d882cc81a64636392bd65f9c88a56e5ddf17c324d71379d"
+    },
+    {
+      "file": "assets/enemy-73.png",
+      "source_sprite": 4652,
+      "source_frame": 73,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "8ab09677f89db85a4969cf0a715c01d2e88f5a15278894582632de7be3ab36ad"
+    },
+    {
+      "file": "assets/enemy-74.png",
+      "source_sprite": 4652,
+      "source_frame": 74,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "0047273f432285f884f6422e817bd15b9a877bb9b19fce1384655a7af60171b6"
+    },
+    {
+      "file": "assets/enemy-75.png",
+      "source_sprite": 4652,
+      "source_frame": 75,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "832fa9a42e428b1b11cb59425f1b33da922c59dcf6ab7bc2b13155f975e26d3e"
+    },
+    {
+      "file": "assets/enemy-76.png",
+      "source_sprite": 4652,
+      "source_frame": 76,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "1f73ff646a6a686e2ee43b4c944351b36f7b2f53b268bf2c0356f7b84cfc3b2d"
+    },
+    {
+      "file": "assets/enemy-77.png",
+      "source_sprite": 4652,
+      "source_frame": 77,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "9b4c8e852d9a66a6e4eecf9bf0984903e0da3322fa333453ff2225d8fe497186"
+    },
+    {
+      "file": "assets/enemy-78.png",
+      "source_sprite": 4652,
+      "source_frame": 78,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "ffdd731ea8bd8f443b2bf6d492e66fcc6cd6cc7f8798bfea400b7c3ad1402da0"
+    },
+    {
+      "file": "assets/enemy-79.png",
+      "source_sprite": 4652,
+      "source_frame": 79,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "f2a7e6cefbdbf47ba1a2aa28b87ec28d35c7754552afdd0a50308dbcc6ef6f75"
+    },
+    {
+      "file": "assets/enemy-80.png",
+      "source_sprite": 4652,
+      "source_frame": 80,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "ffb210a9d6e2cb7aa1561e74aaa309a263746dfe456381dfddc957bad9b32313"
+    },
+    {
+      "file": "assets/enemy-81.png",
+      "source_sprite": 4652,
+      "source_frame": 81,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "50223bca002714e9b0caf18529c6b2efa41ddc07cc64627c0cb77b1a5177c328"
+    },
+    {
+      "file": "assets/enemy-82.png",
+      "source_sprite": 4652,
+      "source_frame": 82,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "5bca3ca1a5f0fcae4879e9e37c0d860339a32a5c437795c7c367de8b546f005c"
+    },
+    {
+      "file": "assets/enemy-83.png",
+      "source_sprite": 4652,
+      "source_frame": 83,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "840b2bacc85bcb14013dc70505be46d8f08800a19bb06bfe8bc7131e0719db90"
+    },
+    {
+      "file": "assets/enemy-84.png",
+      "source_sprite": 4652,
+      "source_frame": 84,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "dbaeffe360e3388bc037852b0a88285a5c415a825c224c0095afa03ee950f54d"
+    },
+    {
+      "file": "assets/enemy-85.png",
+      "source_sprite": 4652,
+      "source_frame": 85,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "defd32fbd1e1f390e28d76daaedf6bbaae894be82856fc4aae44d47041796570"
+    },
+    {
+      "file": "assets/enemy-86.png",
+      "source_sprite": 4652,
+      "source_frame": 86,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "185b00fb02c442978db2761fbf91896a0adf935d4a7866d7fd4b54504c6a73a2"
+    },
+    {
+      "file": "assets/enemy-87.png",
+      "source_sprite": 4652,
+      "source_frame": 87,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "2eb05426938f07fa082eff454f8ef432590af8f1ba8739ad41a3d320a323120e"
+    },
+    {
+      "file": "assets/enemy-88.png",
+      "source_sprite": 4652,
+      "source_frame": 88,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "5819287b7f8d947bcecdc518234e03876721b42ea431ca7d24c2779cb35267f6"
+    },
+    {
+      "file": "assets/enemy-89.png",
+      "source_sprite": 4652,
+      "source_frame": 89,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "debe125dd290ccc43becd0b9825efdb922efbb91b8b63a9ee83173a7d2b1b174"
+    },
+    {
+      "file": "assets/enemy-90.png",
+      "source_sprite": 4652,
+      "source_frame": 90,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "74d1310ea8113eb878a78c34262a29b414ed3f9f92a92eff3b5a6e4c6141fbab"
+    },
+    {
+      "file": "assets/enemy-91.png",
+      "source_sprite": 4652,
+      "source_frame": 91,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "cfd0a82182a95e063a2a21ec908674f906e6f88192ca99adc1102247fd7cc185"
+    },
+    {
+      "file": "assets/enemy-92.png",
+      "source_sprite": 4652,
+      "source_frame": 92,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "5e8720f7883ea27ff21c7148e1d2a990f60cdd76f10a68619a618d8472122cb2"
+    },
+    {
+      "file": "assets/enemy-93.png",
+      "source_sprite": 4652,
+      "source_frame": 93,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "f24539f9df2366252c9156b80b2362bad8ad6d6733429a3676d3ca6f5981595b"
+    },
+    {
+      "file": "assets/enemy-94.png",
+      "source_sprite": 4652,
+      "source_frame": 94,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "90f28b858e1a6d55843184bc1b7cd125ada15c56414f79c4ab881d6126a6e476"
+    },
+    {
+      "file": "assets/enemy-95.png",
+      "source_sprite": 4652,
+      "source_frame": 95,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "c120463f7f7e94ef7dd3432da3f7c6bf18fc4382b5c2ca347aa85a08b1eec662"
+    },
+    {
+      "file": "assets/enemy-96.png",
+      "source_sprite": 4652,
+      "source_frame": 96,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "c1343ed9a49f63bc87bd41ef805a36e4ff53a38b03317f8f284ca869b5dc36b0"
+    },
+    {
+      "file": "assets/enemy-97.png",
+      "source_sprite": 4652,
+      "source_frame": 97,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "adcdf8317eac39a6adb59a6b63c67de582092b622ce26bc2a74785ac731b8819"
+    },
+    {
+      "file": "assets/enemy-98.png",
+      "source_sprite": 4652,
+      "source_frame": 98,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "4812254ac28d3f924f7e5b4f8a73fd9e0f9d15473076eb96c366036b80361f3a"
+    },
+    {
+      "file": "assets/enemy-99.png",
+      "source_sprite": 4652,
+      "source_frame": 99,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "5a17cf6e78fa8e905149ab38bca19b5e7a84b118527bf5002f1ce9e8ddb77fb9"
+    },
+    {
+      "file": "assets/enemy-273.png",
+      "source_sprite": 4652,
+      "source_frame": 273,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "9e6a1978e85b6e7de384c5221f5a30971e7ccfa47d326b704048a516fa044a00"
+    },
+    {
+      "file": "assets/night-forest-original.png",
+      "source_sprite": 3870,
+      "source_frame": 5,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "427f1606d98c1f5893a1e46022ca3551afe672c0488c8704447bbf258c4debf9"
+    },
+    {
+      "file": "assets/sky-original.png",
+      "source_sprite": 3870,
+      "source_frame": 6,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "ee8d45e451e19f8f7bee33b537b395ee55d0c9e05c9069c94759bd0225b06cf3"
+    },
+    {
+      "file": "assets/deadlands-original.png",
+      "source_sprite": 3870,
+      "source_frame": 7,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "599f158ff0d44c443555eb49b827f6ca90b6a8c0bcb13158f0b3fe6489bb5198"
+    },
+    {
+      "file": "assets/danger-zone-original.png",
+      "source_sprite": 3870,
+      "source_frame": 8,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "7d1ddb1ae7dbdd2856a20b5cf0c10356d40fcd3367115e8febb8f4125eb8279b"
+    },
+    {
+      "file": "assets/desert-original.png",
+      "source_sprite": 3870,
+      "source_frame": 9,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "38abe335b401242bace3fa1a3bff6adbf34c911de6ab310c2bc44093764aa08f"
+    },
+    {
+      "file": "assets/beach-original.png",
+      "source_sprite": 3870,
+      "source_frame": 10,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "d606bce1f3edc80fa66f3e25d087680b130a8cabf4e90d817df3327f757ba4d6"
+    },
+    {
+      "file": "assets/polluted-sky-original.png",
+      "source_sprite": 3870,
+      "source_frame": 16,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "1a58c02f6aeb213be5ae9cb7e5243ba7b13a41063f16bee73a8ebc9f92a376a5"
+    },
+    {
+      "file": "assets/secret-beach-original.png",
+      "source_sprite": 3870,
+      "source_frame": 17,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "3581b051676dbf3760faced60aecd3f56582c2f0868c552c1de38ec8ca7227c2"
+    },
+    {
+      "file": "assets/dark-portal-original.png",
+      "source_sprite": 3870,
+      "source_frame": 19,
+      "role": "Expanded Battle Arena original artwork",
+      "sha256": "6ad863de1a82099d8ccd149d69015dd60125042693e1b8cc52db6503cef0e8f8"
     }
   ],
   "note": "PNG files copied byte-for-byte from sprite export. SVG viewBox selects the source background stage bounds without repainting. Hero reward bounce is a new CSS effect, not a recovered animation."

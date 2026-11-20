@@ -1,14 +1,14 @@
-import {validPrinter} from './printer.mjs?v=0.22.1';
-import {validButtonMachine} from './button-machine.mjs?v=0.22.1';
-import {newFeatures,validFeatures,migrateFeatures,owns} from './features.mjs?v=0.22.1';
-import {validDragon,ensureDragon} from './dragon.mjs?v=0.22.1';
-import {validArcade} from './arcade.mjs?v=0.22.1';
-import {validGarden} from './garden.mjs?v=0.22.1';
-import {region,ENEMY_DATA} from './regions.mjs?v=0.22.1';
-import {validSkills} from './skills.mjs?v=0.22.1';
-import {baseStats,growthStats,settleGrowth} from './growth.mjs?v=0.22.1';
-import {arenaRank,validEquipment} from './equipment.mjs?v=0.22.1';
-import {calcReqExp,progressUp,gainBoost} from './core.mjs?v=0.22.1';
+import {validPrinter} from './printer.mjs?v=0.23.0';
+import {validButtonMachine} from './button-machine.mjs?v=0.23.0';
+import {newFeatures,validFeatures,migrateFeatures,owns} from './features.mjs?v=0.23.0';
+import {validDragon,ensureDragon} from './dragon.mjs?v=0.23.0';
+import {validArcade} from './arcade.mjs?v=0.23.0';
+import {validGarden} from './garden.mjs?v=0.23.0';
+import {region,ENEMY_DATA} from './regions.mjs?v=0.23.0';
+import {validSkills} from './skills.mjs?v=0.23.0';
+import {baseStats,growthStats,settleGrowth} from './growth.mjs?v=0.23.0';
+import {arenaRank,validEquipment} from './equipment.mjs?v=0.23.0';
+import {calcReqExp,progressUp,gainBoost} from './core.mjs?v=0.23.0';
 export function newGame(){return {version:1,progressVersion:1,features:newFeatures(),fps:40,saveid:0,progPercent:0,boostMax:500,idlerAppreciate:false,curCareerLevel:[0,0],save:{level:1,bestLevel:1,gDifficulty:1,banned:0,gOldAscension:false,totalExp:0,currentExp:0,idleMode:false,progStore:100,progSpeedManual:100,progSpeedAuto:30,careerLevel:[0,0],totalStupidity:0,permaBanPenalty:Array(32).fill(0),boost:100,boostPurchased:0,featureBoostGen:false,rewardClaim:0,coin:0,greenCoin:0,blueCoin:0},upgrades:0,log:[]};}
 export function tick(r){ensureDragon(r);if(!owns(r,'idle'))r.save.idleMode=false;progressUp(r);r.progPercent=Math.min(r.progPercent,100);if(r.save.idleMode&&r.progPercent>=100)return claim(r);return null;}
 export function progressReward(r,{idle=r.save.idleMode,rng=Math.random,claimNumber=r.save.rewardClaim+1}={}){const s=r.save;calcReqExp(r);let exp=Math.floor(1.4*s.boost*Math.pow(s.level,.6)),coin=Math.floor(.35*s.boost*Math.pow(s.level,.6)*(.8+rng()*.4)),green=100,blue=0;
@@ -39,7 +39,8 @@ export function restore(text){try{
  if(parsed.arena!==undefined){
   const a=parsed.arena;if(!a||typeof a!=='object'||Array.isArray(a))return null;r.arena={};
   for(const key of ['hp','kills','pixels','xp','cooldown','enemyTimer','spawnTimer','enemyIndex','enemyHp']){if(!finite(a[key]))return null;r.arena[key]=a[key];}
-  const zone=region(a.zone);if(!zone||arenaRank(r).rank<zone.rank||!integer(a.enemyIndex,0,ENEMY_DATA.length-1)||a.zone>0&&!zone.pool.includes(a.enemyIndex))return null;
+  const zone=region(a.zone);if(!zone||arenaRank(r).rank<zone.rank||!integer(a.enemyIndex,0,ENEMY_DATA.length-1)||a.zone>0&&zone.pool.length>0&&!zone.pool.includes(a.enemyIndex))return null;
+  const discovered=a.discoveredZones??[];if(!Array.isArray(discovered)||new Set(discovered).size!==discovered.length||!discovered.every(id=>region(id)?.hidden===true)||zone.hidden&&!discovered.includes(a.zone)||!zone.pool.length&&a.enemyAlive)return null;r.arena.discoveredZones=[...discovered];
   const enemy=ENEMY_DATA[a.enemyIndex];if(a.enemyHp>enemy.hp||!integer(a.kills)||!integer(a.xp))return null;
   if(a.growthVersion!==undefined&&a.growthVersion!==1)return null;
   if(a.growthVersion===1){r.arena.growthVersion=1;for(const key of ['rewardedRank','skillPoints','craftingMaterial','battlePoints']){if(!integer(a[key]))return null;r.arena[key]=a[key];}if(a.rewardedRank<1||a.rewardedRank>arenaRank(r).rank)return null;}

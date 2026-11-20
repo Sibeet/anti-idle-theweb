@@ -194,5 +194,18 @@
     "runtime": "game.mjs / unchanged original core.mjs progressUp",
     "scope": "Normal Progress rewards, mode-specific modifiers; careers/pets/modules/Epic/event hooks remain outside this port",
     "migration": "progressVersion=1; recognize old 100+25*n equal-speed pair, rebase Idle to 30+25*n and cap at 200; Manual cap500"
+  },
+  "arena_navigation": {
+    "sources": [
+      "DefineSprite_3870 frames1-10/16/17/19 directional destination and reqRank load scripts",
+      "DefineSprite_5992/frame_1/PlaceObject2_4653_2720 load pcode selectMonster",
+      "frame_4/DoAction.as addArenaEnemy entries35..99 and273"
+    ],
+    "scope": "Normal base encounters through The Beach, Danger Zone without random spawns, Dark Portal base Guardian, Polluted Sky and Secret Beach side areas",
+    "adaptations": [
+      "Directional click/touch buttons and arrow-key travel; select controls retain native keyboard behavior",
+      "Side areas omitted from dropdown until first entry; discovery persisted in port save",
+      "No full late-game Finalizer/Guardian phases, NPC missions or rare/hardcore variants; existing combat simplifications still apply"
+    ]
   }
 }

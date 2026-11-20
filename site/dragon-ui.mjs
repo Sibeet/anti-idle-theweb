@@ -1,5 +1,5 @@
-import {FEATURES,owns,buyFeature} from './features.mjs?v=0.22.1';
-import {ensureDragon,feedCost,feedDragon,feedingRequirement,speeches,claimDragonLevelReward,deservedRewards} from './dragon.mjs?v=0.22.1';
+import {FEATURES,owns,buyFeature} from './features.mjs?v=0.23.0';
+import {ensureDragon,feedCost,feedDragon,feedingRequirement,speeches,claimDragonLevelReward,deservedRewards} from './dragon.mjs?v=0.23.0';
 export function createDragonUI({getRoot,save,log,refresh,openShop}){
  const $=id=>document.getElementById(id),fmt=n=>n.toLocaleString('en-US');let book=false,signature='';
  $('featureShopList').innerHTML=FEATURES.map(f=>`<article class="feature-card"><div><strong>${f.name}</strong><span>${f.requires?'Requires '+FEATURES.find(x=>x.id===f.requires).name:'Lv. '+f.level} · ${f.currency?'B':'Y'} ${fmt(f.cost)}</span></div><button id="unlock${f.id}" data-unlock="${f.id}">Buy</button></article>`).join('');

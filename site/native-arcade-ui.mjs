@@ -1,5 +1,5 @@
-import {ensureArcade} from './arcade.mjs?v=0.22.1';
-import {createBalance,createCount,createMMRX,finishNative} from './arcade-native.mjs?v=0.22.1';
+import {ensureArcade} from './arcade.mjs?v=0.23.0';
+import {createBalance,createCount,createMMRX,finishNative} from './arcade-native.mjs?v=0.23.0';
 export function createNativeArcadeUI({kind,getRoot,save,log,refresh,isActive}){
  const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US'),factory={balance:createBalance,count:createCount,mmrx:createMMRX}[kind];let owner=getRoot(),game=null,result=null,last=performance.now();
  function settle(){if(!game||game.settled)return;result=finishNative(getRoot(),game,kind);save();log(kind+': '+fmt(result.score)+' | +'+fmt(result.coin)+' Y / +'+fmt(result.exp)+' EXP');}

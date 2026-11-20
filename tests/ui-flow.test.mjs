@@ -2,8 +2,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {newGame} from '../site/game.mjs';
-import {ensureArena} from '../site/combat.mjs';
-import {settleGrowth} from '../site/growth.mjs';
+import {ensureArena,ENEMIES} from '../site/combat.mjs';
+import {settleGrowth,growthStats} from '../site/growth.mjs';
 const ids=new Map(),nodes=[],listeners={};let raf;const domWrites={attributes:0,progress:0,byId:{}};
 class Element{
  constructor(tag='div',attrs={}){this.tagName=tag.toUpperCase();this.attrs={...attrs};this.dataset={};for(const [k,v] of Object.entries(attrs))if(k.startsWith('data-'))this.dataset[k.slice(5).replace(/-([a-z])/g,(_,c)=>c.toUpperCase())]=v;this.id=attrs.id;this.value=attrs.value??'';this.textContent='';this.disabled=false;this.children=[];this.options=[];this.style=new Proxy({setProperty(){}},{set:(target,key,value)=>{if(this.id==='progressFill'&&key==='height')domWrites.progress++;target[key]=value;return true;}});this.classes=new Set((attrs.class??'').split(' '));this.classList={contains:x=>this.classes.has(x),add:(...x)=>x.forEach(x=>this.classes.add(x)),remove:(...x)=>x.forEach(x=>this.classes.delete(x)),toggle:(x,force)=>{const on=force===undefined?!this.classes.has(x):force;if(on)this.classes.add(x);else this.classes.delete(x);return on;}};this.parentElement={setAttribute(){}};nodes.push(this);if(this.id)ids.set(this.id,this);}
@@ -28,6 +28,14 @@ if(process.env.FEATURE_GATE_TEST==='1'){
  const fresh=newGame();localStorage.setItem('anti-idle-web-prototype-v1',JSON.stringify(fresh));globalThis.location={hash:'#arcade'};
 }
 await import('../site/app.mjs');
+if(process.env.ARENA_ROUTES_TEST==='1'){
+ const r=newGame();r.features.arena=true;const a=ensureArena(r);a.xp=1e12;settleGrowth(r);a.hp=growthStats(r).maxHp;r.save.level=r.save.bestLevel=1500;
+ await ids.get('importFile').onchange({target:{files:[{size:20000,text:async()=>JSON.stringify(r)}],value:''}});nodes.find(n=>n.dataset.tab==='arena').click();assert.equal(ids.get('regionSelect').options.some(o=>o.value==='15'||o.value==='16'),false);
+ for(let i=0;i<5;i++)ids.get('arenaExitright').click();assert.equal(ids.get('arenaLocation').textContent,'The Sky');assert.ok(ids.get('arenaExitupLabel').textContent.includes('???'));ids.get('arenaExitup').click();assert.equal(ids.get('arenaLocation').textContent,'Polluted Sky');assert.ok(ids.get('regionSelect').options.some(o=>o.value==='15'));
+ ids.get('barButton').click();assert.equal(ids.get('arena').classes.has('hidden'),false);ids.get('regionSelect').value='7';ids.get('regionSelect').onchange();ids.get('travelRegion').click();assert.equal(ids.get('arenaLocation').textContent,'Danger Zone');assert.equal(ids.get('attackButton').disabled,true);ids.get('arenaExitdown').click();ids.get('arenaExitleft').click();assert.equal(ids.get('arenaLocation').textContent,'Secret Beach');
+ listeners.keydown({code:'ArrowUp',target:{tagName:'DIV'},preventDefault(){}});assert.equal(ids.get('arenaLocation').textContent,'The Beach');listeners.keydown({code:'ArrowLeft',target:{tagName:'SELECT'},preventDefault(){}});assert.equal(ids.get('arenaLocation').textContent,'The Beach','select arrow keys must not travel');
+ ids.get('saveButton').click();const saved=JSON.parse(localStorage.getItem('anti-idle-web-prototype-v1'));assert.deepEqual(saved.arena.discoveredZones,[15,16]);console.log('PASS: actual scene arrows, keyboard/select input isolation, dropdown travel, hidden discovery/list updates, shared progress bar and saves.');process.exit(0);
+}
 if(process.env.PROGRESS_MODES_TEST==='1'){
  const r=newGame();r.features.idle=true;r.save.level=r.save.bestLevel=50;r.save.rewardClaim=10;r.save.greenCoin=2000;r.save.blueCoin=10;
  await ids.get('importFile').onchange({target:{files:[{size:20000,text:async()=>JSON.stringify(r)}],value:''}});nodes.find(n=>n.dataset.tab==='home').click();assert.ok(ids.get('manualPreview').textContent.includes('100%'));assert.ok(ids.get('idlePreview').textContent.includes('30%'));assert.ok(ids.get('manualPreview').textContent.includes('200 G'));assert.ok(ids.get('idlePreview').textContent.includes('100 G'));assert.ok(ids.get('modeDetail').textContent.includes('Manual 100%'));
@@ -84,7 +92,7 @@ ids.get('regionSelect').value='3';ids.get('regionSelect').onchange();ids.get('tr
 ids.get('quickAttack').click();ids.get('saveButton').click();saved=JSON.parse(localStorage.getItem('anti-idle-web-prototype-v1'));assert.ok(saved.arena.mp<fixture.arena.mp);assert.ok(saved.arena.attacks>0);
 ids.get('gearFilter').value='hat';ids.get('gearFilter').onchange();assert.ok(ids.get('weaponList').innerHTML.includes('Training Hat'));
 const craft=nodes.slice().reverse().find(n=>n.dataset.gear==='hat:102'&&n.tagName==='BUTTON');ids.get('weaponList').onclick({target:craft});ids.get('saveButton').click();saved=JSON.parse(localStorage.getItem('anti-idle-web-prototype-v1'));assert.ok(saved.equipment.armorOwned.includes('hat:102'));
-assert.ok(ids.get('bestiaryList').innerHTML.includes('Master Dummy'));assert.ok(ids.get('bossProgress').textContent.includes('/ 4'));
+assert.ok(ids.get('bestiaryList').innerHTML.includes('Master Dummy'));assert.ok(ids.get('bossProgress').textContent.includes('/ '+ENEMIES.filter(e=>e.boss).length));
 // A separate Garden view can plant, mature and harvest while keeping the active view.
 const gardenTab=nodes.find(n=>n.dataset.tab==='garden');gardenTab.click();assert.equal(ids.get('garden').classes.has('hidden'),false);
 let plot=nodes.slice().reverse().find(n=>n.dataset.plot==='0'&&n.tagName==='BUTTON');ids.get('gardenPlots').onclick({target:plot});

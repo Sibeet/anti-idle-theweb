@@ -1,4 +1,4 @@
-import {owns} from './features.mjs?v=0.22.1';
+import {owns} from './features.mjs?v=0.23.0';
 export function ensurePrinter(r){return r.printer??={version:1,level:1,charge:80,progress:0,prints:0,criticals:0,totalMoney:0,totalCharge:0,lastCoin:0,lastGreen:0,lastBlue:0};}
 export const printerCapacity=r=>owns(r,'superBattery')?200:160;
 function base(r){const d=ensurePrinter(r);return Math.round(Math.floor(((d.level+25)*Math.pow(Math.min(r.save.level,9001),.65)*.63*10+4560)*(100+d.level)/100)/125);}

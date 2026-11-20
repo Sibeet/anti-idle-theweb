@@ -1,4 +1,4 @@
-import {SPEECHES} from './dragon-speeches.mjs?v=0.22.1';
+import {SPEECHES} from './dragon-speeches.mjs?v=0.23.0';
 const day=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 export function ensureDragon(r,now=new Date()){
  const d=r.dragon??={version:1,day:day(now),today:0,total:0,knowledge:0,meter:0,boost:0,levelRewards:0,discovered:{},inventory:{},lastSpeech:''};
